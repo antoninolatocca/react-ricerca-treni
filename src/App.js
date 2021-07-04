@@ -3,24 +3,24 @@ import './style.css';
 
 class RigaSoluzioneTreno extends React.Component {
   GetHourDiff(pStartHour, pEndHour) {
-    var res = '';
-    var aTmp = '';
+    let res = '';
+    let aTmp = '';
     // Trasformo l'orario di inizio in minuti
     aTmp = pStartHour.split(':');
-    var nStartMin = Number(aTmp[0]) * 60 + Number(aTmp[1]);
+    let nStartMin = Number(aTmp[0]) * 60 + Number(aTmp[1]);
     // Trasformo l'orario di fine in minuti
     aTmp = pEndHour.split(':');
-    var nEndMin = Number(aTmp[0]) * 60 + Number(aTmp[1]);
+    let nEndMin = Number(aTmp[0]) * 60 + Number(aTmp[1]);
     // Calcolo la differenza
-    var nDiff = 0;
+    let nDiff = 0;
     if (nStartMin > nEndMin) {
       nDiff = nStartMin - nEndMin;
     } else {
       nDiff = nEndMin - nStartMin;
     }
     // Formatto la stringa di uscita
-    var nDiffMin = 0;
-    var nDiffHour = 0;
+    let nDiffMin = 0;
+    let nDiffHour = 0;
     if (nDiff > 59) {
       nDiffMin = nDiff % 60;
       nDiffHour = (nDiff - nDiffMin) / 60;
@@ -66,7 +66,16 @@ class Ricerca extends React.Component {
     this.handleRicercaPartenzaChange = this.handleRicercaPartenzaChange.bind(
       this
     );
+
     this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(this);
+
+    this.handleRicercaOraInizioChange = this.handleRicercaOraInizioChange.bind(
+      this
+    );
+
+    this.handleRicercaOraFineChange = this.handleRicercaOraFineChange.bind(
+      this
+    );
   }
 
   handleRicercaPartenzaChange(e) {
@@ -77,9 +86,19 @@ class Ricerca extends React.Component {
     this.props.onFilterArrivoChange(e.target.value);
   }
 
+  handleRicercaOraInizioChange(e) {
+    this.props.onFilterOraInizioChange(e.target.value);
+  }
+
+  handleRicercaOraFineChange(e) {
+    this.props.onFilterOraFineChange(e.target.value);
+  }
+
   render() {
     const ricercaPartenza = this.props.ricercaPartenza;
     const ricercaArrivo = this.props.ricercaArrivo;
+    const ricercaOraInizio = this.props.ricercaOraInizio;
+    const ricercaOraFine = this.props.ricercaOraFine;
 
     const today = new Date();
     const y = today.getFullYear();
@@ -89,6 +108,8 @@ class Ricerca extends React.Component {
         : today.getMonth() + 1;
     const d = today.getDate() < 9 ? '0' + today.getDate() : today.getDate();
     const todayString = y + '-' + m + '-' + d;
+
+    console.log(this.props);
 
     return (
       <div id="rigaRicerca">
@@ -110,13 +131,29 @@ class Ricerca extends React.Component {
             onChange={this.handleRicercaArrivoChange}
           />
           <label htmlFor="dalleOre">Dalle </label>
-          <select id="dalleOre">
-            <option value="0">00:00</option>
-            <option value="1">01:00</option>
-            <option value="2">02:00</option>
-            <option value="3">03:00</option>
-            <option value="4">04:00</option>
-            <option value="5">05:00</option>
+          <select
+            id="dalleOre"
+            value={ricercaOraInizio}
+            onChange={this.handleRicercaOraInizioChange}
+          >
+            <option key="0" value="0">
+              00:00
+            </option>
+            <option key="1" value="1">
+              01:00
+            </option>
+            <option key="2" value="2">
+              02:00
+            </option>
+            <option key="3" value="3">
+              03:00
+            </option>
+            <option key="4" value="4">
+              04:00
+            </option>
+            <option key="5" value="5">
+              05:00
+            </option>
             <option value="6">06:00</option>
             <option value="7">07:00</option>
             <option value="8">08:00</option>
@@ -137,7 +174,11 @@ class Ricerca extends React.Component {
             <option value="23">23:00</option>
           </select>
           <label htmlFor="alleOre">Alle </label>
-          <select id="alleOre">
+          <select
+            id="alleOre"
+            value={ricercaOraFine}
+            onChange={this.handleRicercaOraFineChange}
+          >
             <option value="0">00:00</option>
             <option value="1">01:00</option>
             <option value="2">02:00</option>
@@ -168,7 +209,7 @@ class Ricerca extends React.Component {
             type="date"
             id="date"
             name="start-date"
-            value={todayString}
+            defaultValue={todayString}
             min={todayString}
             max="2021-12-31"
           />
@@ -179,18 +220,32 @@ class Ricerca extends React.Component {
 }
 
 class TabellaSoluzioni extends React.Component {
+  isInRange(partenza, arrivo, min, max) {
+    partenza = parseInt(partenza.substring(0, 2));
+    arrivo = parseInt(arrivo.substring(0, 2));
+    return partenza >= min && arrivo <= max ? true : false;
+  }
+
   render() {
     const righe = [];
     const ricercaPartenza = this.props.ricercaPartenza;
     const ricercaArrivo = this.props.ricercaArrivo;
+    const ricercaInizio = this.props.ricercaOraInizio;
+    const ricercaFine = this.props.ricercaOraFine;
 
     this.props.treni.forEach(treno => {
       if (
         treno.stazione_partenza.toUpperCase() ===
           ricercaPartenza.toUpperCase() &&
-        treno.stazione_arrivo.toUpperCase() === ricercaArrivo.toUpperCase()
+        treno.stazione_arrivo.toUpperCase() === ricercaArrivo.toUpperCase() &&
+        this.isInRange(
+          treno.orario_partenza,
+          treno.orario_arrivo,
+          ricercaInizio,
+          ricercaFine
+        )
       ) {
-        righe.push(<RigaSoluzioneTreno treno={treno} key={treno.nome} />);
+        righe.push(<RigaSoluzioneTreno treno={treno} key={treno.nome_treno} />);
       }
     });
 
@@ -216,13 +271,22 @@ class TabellaSoluzioniRicercabili extends React.Component {
     super(props);
     this.state = {
       ricercaPartenza: 'Milano Centrale',
-      ricercaArrivo: 'Roma Termini'
+      ricercaArrivo: 'Roma Termini',
+      ricercaOraInizio: '5',
+      ricercaOraFine: '21'
     };
 
     this.handleRicercaPartenzaChange = this.handleRicercaPartenzaChange.bind(
       this
     );
     this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(this);
+
+    this.handleRicercaOraInizioChange = this.handleRicercaOraInizioChange.bind(
+      this
+    );
+    this.handleRicercaOraFineChange = this.handleRicercaOraFineChange.bind(
+      this
+    );
   }
 
   handleRicercaPartenzaChange(partenza) {
@@ -237,19 +301,37 @@ class TabellaSoluzioniRicercabili extends React.Component {
     });
   }
 
+  handleRicercaOraInizioChange(inizio) {
+    this.setState({
+      oraInizio: inizio
+    });
+  }
+
+  handleRicercaOraFineChange(fine) {
+    this.setState({
+      oraFine: fine
+    });
+  }
+
   render() {
     return (
       <div className="container">
         <Ricerca
           ricercaPartenza={this.state.ricercaPartenza}
           ricercaArrivo={this.state.ricercaArrivo}
+          ricercaOraInizio={this.state.ricercaOraInizio}
+          ricercaOraFine={this.state.ricercaOraFine}
           onFilterPartenzaChange={this.handleRicercaPartenzaChange}
           onFilterArrivoChange={this.handleRicercaArrivoChange}
+          onFilterOraInizioChange={this.handleRicercaOraInizioChange}
+          onFilterOraFineChange={this.handleRicercaOraFineChange}
         />
         <TabellaSoluzioni
           treni={this.props.treni}
           ricercaPartenza={this.state.ricercaPartenza}
           ricercaArrivo={this.state.ricercaArrivo}
+          ricercaOraInizio={this.state.ricercaOraInizio}
+          ricercaOraFine={this.state.ricercaOraFine}
         />
       </div>
     );
