@@ -40,6 +40,7 @@ tbody tr:hover {
 table th {
   color: #fff;
   padding: 4px;
+  text-align: center;
 }
 
 table td {
@@ -58,4 +59,10 @@ table td {
   outline: 0;
   padding: 2px 4px;
   font-size: 110%;
+}
+
+.form-control {
+  height: 38px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
 }
