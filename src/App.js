@@ -1,42 +1,17 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
+import Utility from './Utility';
 
 import './style.css';
 
+/**
+ * + App {treni}
+ *    + Ricerca {ricercaPartenza, ricercaArrivo, ricercaOraPartenza, ricercaOraArrivo}
+ *    + TabellaSoluzioni {treni, ricercaPartenza, ricercaArrivo, ricercaOraPartenza, ricercaOraArrivo}
+ *        + RigaSoluzioneTreno {treno}
+ */
+
 class RigaSoluzioneTreno extends React.Component {
-  GetHourDiff(pStartHour, pEndHour) {
-    let res = '';
-    let aTmp = '';
-    // Trasformo l'orario di inizio in minuti
-    aTmp = pStartHour.split(':');
-    let nStartMin = Number(aTmp[0]) * 60 + Number(aTmp[1]);
-    // Trasformo l'orario di fine in minuti
-    aTmp = pEndHour.split(':');
-    let nEndMin = Number(aTmp[0]) * 60 + Number(aTmp[1]);
-    // Calcolo la differenza
-    let nDiff = 0;
-    if (nStartMin > nEndMin) {
-      nDiff = nStartMin - nEndMin;
-    } else {
-      nDiff = nEndMin - nStartMin;
-    }
-    // Formatto la stringa di uscita
-    let nDiffMin = 0;
-    let nDiffHour = 0;
-    if (nDiff > 59) {
-      nDiffMin = nDiff % 60;
-      nDiffHour = (nDiff - nDiffMin) / 60;
-    } else {
-      nDiffMin = nDiff;
-    }
-    if (nDiffHour < 10) res += '0';
-    res += nDiffHour;
-    res += 'h ';
-    if (nDiffMin < 10) res += '0';
-    res += nDiffMin;
-    res += 'm';
-    return res;
-  }
 
   render() {
     const treno = this.props.treno;
@@ -53,7 +28,7 @@ class RigaSoluzioneTreno extends React.Component {
           <span className="font-bold">{treno.orario_arrivo}</span>
         </td>
         <td>
-          <b>{this.GetHourDiff(treno.orario_partenza, treno.orario_arrivo)}</b>
+          <b>{Utility.getHourDiff(treno.orario_partenza, treno.orario_arrivo)}</b>
         </td>
         <td>{treno.nome_treno}</td>
         <td className="font-bold">&euro;{treno.prezzo_biglietto}</td>
@@ -65,50 +40,20 @@ class RigaSoluzioneTreno extends React.Component {
 class Ricerca extends React.Component {
   constructor(props) {
     super(props);
-    this.handleRicercaPartenzaChange = this.handleRicercaPartenzaChange.bind(this);
-
-    this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(this);
 
     this.state = {
-      start : '',
-      end : ''
-    }
+      start : this.props.ricercaOraInizio,
+      end : this.props.ricercaOraFine,
+      stazione_partenza : this.props.ricercaPartenza,
+      stazione_arrivo : this.props.ricercaArrivo
+    };
 
-  }
+    this._stazioni = [];
+    for(let item of this.props.stazioni.values()) {
+      this._stazioni.push({value: item, label: item});
+    };
 
-  handleRicercaPartenzaChange(e) {
-    this.props.onFilterPartenzaChange(e.target.value);
-  }
-
-  handleRicercaArrivoChange(e) {
-    this.props.onFilterArrivoChange(e.target.value);
-  }
-
-  logChangeStart(val) {
-    this.setState({start: val.value});
-    this.props.onFilterOraInizioChange(val.value);
-  }
-
-  logChangeEnd(val) {
-    this.setState({end: val.value});
-    this.props.onFilterOraFineChange(val.value);
-  }
-
-  displaySelectedValue(n, x) {
-    if(!n) n = x;
-    return (n <= 9) ? '0' + n : n;
-  }
-
-  render() {
-    let ricercaPartenza = this.props.ricercaPartenza;
-    let ricercaArrivo = this.props.ricercaArrivo;
-
-    let ricercaOraInizio = this.props.ricercaOraInizio;
-    let ricercaOraFine = this.props.ricercaOraFine;
-
-    console.log(this.props);
-
-    var options = [
+    this._orari = [
       {value: '0', label: '00:00' },
       {value: '1', label: '01:00' },
       {value: '2', label: '02:00' },
@@ -134,31 +79,51 @@ class Ricerca extends React.Component {
       {value: '22', label: '22:00' },
       {value: '23', label: '23:00' }
     ];
+  }
 
+  handleRicercaPartenzaChange(val) {
+    this.setState({stazione_partenza: val.value});
+    this.props.onFilterPartenzaChange(val.value);
+  }
+
+  handleRicercaArrivoChange(val) {
+    this.setState({stazione_arrivo: val.value});
+    this.props.onFilterArrivoChange(val.value);
+  }
+
+  handleRicercaOraInizioChange(val) {
+    this.setState({start: val.value});
+    this.props.onFilterOraInizioChange(val.value);
+  }
+
+  handleRicercaOraFineChange(val) {
+    this.setState({end: val.value});
+    this.props.onFilterOraFineChange(val.value);
+  }
+
+  render() {
     return (
       <div id="rigaRicerca">
         <form>
           <div className="row">
             <div className="col form-group">
-              <label htmlFor="trenoDa">Da </label>
-              <input
-                type="text"
-                value={ricercaPartenza}
-                placeholder="Città di partenza"
-                id="trenoDa"
-                onChange={this.handleRicercaPartenzaChange}
-                className="form-control"
+              <label htmlFor="stazionePartenza">Da </label>
+              <Select
+                id="stazionePartenza"
+                value={this.state.ricercaPartenza}
+                options={this._stazioni}
+                placeholder="Stazione di partenza"
+                onChange={this.handleRicercaPartenzaChange.bind(this)}
               />
             </div>
             <div className="col form-group">
-              <label htmlFor="trenoA">A </label>
-              <input
-                type="text"
-                value={ricercaArrivo}
-                placeholder="Città di arrivo"
-                id="trenoA"
-                onChange={this.handleRicercaArrivoChange}
-                className="form-control"
+              <label htmlFor="stazioneArrivo">A </label>
+              <Select
+                id="stazioneArrivo"
+                value={this.state.ricercaArrivo}
+                options={this._stazioni}
+                placeholder="Stazione di arrivo"
+                onChange={this.handleRicercaArrivoChange.bind(this)}
               />
             </div>
             <div className="col form-group">
@@ -166,9 +131,9 @@ class Ricerca extends React.Component {
               <Select
                 id="dalleOre"
                 value={this.state.start}
-                options={options}
-                onChange={this.logChangeStart.bind(this)}
-                placeholder={this.displaySelectedValue(this.state.start, ricercaOraInizio)}
+                options={this._orari}
+                onChange={this.handleRicercaOraInizioChange.bind(this)}
+                placeholder={Utility.displayDigit(this.state.start)}
               />
             </div>
             <div className="col form-group">
@@ -176,9 +141,9 @@ class Ricerca extends React.Component {
               <Select
                 id="alleOre"
                 value={this.state.end}
-                options={options}
-                onChange={this.logChangeEnd.bind(this)}
-                placeholder={this.displaySelectedValue(this.state.end, ricercaOraFine)}
+                options={this._orari}
+                onChange={this.handleRicercaOraFineChange.bind(this)}
+                placeholder={Utility.displayDigit(this.state.end)}
               />
             </div>
           </div>
@@ -235,15 +200,15 @@ class TabellaSoluzioni extends React.Component {
   }
 }
 
-class TabellaSoluzioniRicercabili extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
-    const today = new Date();
-    const h = today.getHours();
+    const _today = new Date();
+    const _h = _today.getHours();
     this.state = {
       ricercaPartenza: 'Milano Centrale',
       ricercaArrivo: 'Roma Termini',
-      ricercaOraInizio: h,
+      ricercaOraInizio: _h,
       ricercaOraFine: '23'
     };
 
@@ -260,6 +225,8 @@ class TabellaSoluzioniRicercabili extends React.Component {
     this.handleRicercaOraFineChange = this.handleRicercaOraFineChange.bind(
       this
     );
+
+    this.getListaStazioni();
   }
 
   handleRicercaPartenzaChange(partenza) {
@@ -275,29 +242,38 @@ class TabellaSoluzioniRicercabili extends React.Component {
   }
 
   handleRicercaOraInizioChange(inizio) {
-    console.log('Ora inizio Change: ' + inizio)
     this.setState({
       ricercaOraInizio: inizio
     });
-    console.log(this.state);
   }
 
   handleRicercaOraFineChange(fine) {
-    console.log('Ora fine Change: ' + fine)
     this.setState({
       ricercaOraFine: fine
     });
-    console.log(this.state);
+  }
+
+  getListaStazioni() {
+    this._stazioni = new Set();
+    this.props.frecce.treni.forEach(tratta => {
+        tratta.fermate.forEach(fermata => {
+            this._stazioni.add(fermata.stazione);
+        })
+    });
+    console.log(this._stazioni);
   }
 
   render() {
     return (
       <div className="container">
         <Ricerca
+          stazioni={this._stazioni}
+
           ricercaPartenza={this.state.ricercaPartenza}
           ricercaArrivo={this.state.ricercaArrivo}
           ricercaOraInizio={this.state.ricercaOraInizio}
           ricercaOraFine={this.state.ricercaOraFine}
+
           onFilterPartenzaChange={this.handleRicercaPartenzaChange}
           onFilterArrivoChange={this.handleRicercaArrivoChange}
           onFilterOraInizioChange={this.handleRicercaOraInizioChange}
@@ -315,4 +291,4 @@ class TabellaSoluzioniRicercabili extends React.Component {
   }
 }
 
-export default TabellaSoluzioniRicercabili;
+export default App;
