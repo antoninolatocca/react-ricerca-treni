@@ -1,196 +1,550 @@
 {
     "treni": [
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "05:00",
-            "orario_arrivo": "09:04",
-            "nome_treno": "Frecciarossa 1000 0909",
-            "prezzo_biglietto": "95,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9509",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "05:00"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "05:45"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "06:12"
+                },            
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "06:59"
+                },
+                {
+                    "stazione": "Arezzo",
+                    "orario": "07:36"
+                },
+                {
+                    "stazione": "Chiusi-Chianciano Terme",
+                    "orario": "08:02"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "08:57"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "09:15"
+                },
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "10:28"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "05:45",
-            "orario_arrivo": "10:35",
-            "nome_treno": "Frecciarossa 1000 9303",
-            "prezzo_biglietto": "95,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9303",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "05:45"
+                },
+                {
+                    "stazione": "Milano Rogoredo",
+                    "orario": "05:58"
+                },
+                {
+                    "stazione": "Piacenza",
+                    "orario": "06:35"
+                },
+                {
+                    "stazione": "Parma",
+                    "orario": "07:05"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "07:23"
+                },
+                {
+                    "stazione": "Modena",
+                    "orario": "07:41"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "08:12"
+                },
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "08:59"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "10:24"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "10:35"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "06:00",
-            "orario_arrivo": "09:10",
-            "nome_treno": "Frecciarossa 1000 9603",
-            "prezzo_biglietto": "95,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9603",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "06:00"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "07:07"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "09:10"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "06:10",
-            "orario_arrivo": "09:50",
-            "nome_treno": "Frecciarossa 1000 8209",
-            "prezzo_biglietto": "95,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "8309",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "06:10"
+                },
+                {
+                    "stazione": "Milano Rogoredo",
+                    "orario": "06:20"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "06:56"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "07:27"
+                },
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "08:14"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "09:43"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "09:10"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "06:35",
-            "orario_arrivo": "09:34",
-            "nome_treno": "Frecciarossa 1000 9605",
-            "prezzo_biglietto": "95,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9605",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "06:35"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "09:34"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "07:00",
-            "orario_arrivo": "10:11",
-            "nome_treno": "Frecciarossa 9607",
-            "prezzo_biglietto": "149,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9609",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "07:30"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "08:37"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "10:40"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "12:10",
-            "orario_arrivo": "15:49",
-            "nome_treno": "Frecciarossa 9535",
-            "prezzo_biglietto": "149,50"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9611",
+            "fermate": [
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "06:50"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "07:00"
+                },
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "08:00"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "09:07"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "11:10"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "13:00",
-            "orario_arrivo": "16:10",
-            "nome_treno": "Frecciarossa 1000 9631",
-            "prezzo_biglietto": "245,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9707",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "07:45"
+                },
+                {
+                    "stazione": "Brescia",
+                    "orario": "08:23"
+                },
+                {
+                    "stazione": "Peschiera del Garda",
+                    "orario": "08:44"
+                },
+                {
+                    "stazione": "Verona Porta Nuova",
+                    "orario": "09:00"
+                },
+                {
+                    "stazione": "Vicenza",
+                    "orario": "09:27"
+                },
+                {
+                    "stazione": "Padova",
+                    "orario": "09:46"
+                },
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "09:00"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "13:10",
-            "orario_arrivo": "16:49",
-            "nome_treno": "Frecciarossa 9539",
-            "prezzo_biglietto": "245,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9709",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "08:15"
+                },
+                {
+                    "stazione": "Desenzano del Garda-Sirmione",
+                    "orario": "09:08"
+                },
+                {
+                    "stazione": "Verona Porta Nuova",
+                    "orario": "09:30"
+                },
+                {
+                    "stazione": "Vicenza",
+                    "orario": "09:57"
+                },
+                {
+                    "stazione": "Padova",
+                    "orario": "10:16"
+                },
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "10:30"
+                },
+                {
+                    "stazione": "Venezia S. Lucia",
+                    "orario": "10:42"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "14:10",
-            "orario_arrivo": "17:49",
-            "nome_treno": "Frecciarossa 9543",
-            "prezzo_biglietto": "129,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9711",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "08:45"
+                },
+                {
+                    "stazione": "Brescia",
+                    "orario": "09:23"
+                },
+                {
+                    "stazione": "Desenzano del Garda-Sirmione",
+                    "orario": "09:35"
+                },
+                {
+                    "stazione": "Peschiera del Garda",
+                    "orario": "09:44"
+                },
+                {
+                    "stazione": "Verona Porta Nuova",
+                    "orario": "10:00"
+                },
+                {
+                    "stazione": "Vicenza",
+                    "orario": "10:27"
+                },
+                {
+                    "stazione": "Padova",
+                    "orario": "10:46"
+                },
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "11:00"
+                },
+                {
+                    "stazione": "Venezia S. Lucia",
+                    "orario": "11:12"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "14:25",
-            "orario_arrivo": "17:40",
-            "nome_treno": "Frecciarossa 9639",
-            "prezzo_biglietto": "110,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9735",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "14:45"
+                },
+                {
+                    "stazione": "Brescia",
+                    "orario": "15:23"
+                },
+                {
+                    "stazione": "Desenzano del Garda-Sirmione",
+                    "orario": "15:38"
+                },
+                {
+                    "stazione": "Verona Porta Nuova",
+                    "orario": "16:00"
+                },
+                {
+                    "stazione": "Vicenza",
+                    "orario": "16:27"
+                },
+                {
+                    "stazione": "Padova",
+                    "orario": "16:46"
+                },
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "17:00"
+                },
+                {
+                    "stazione": "Venezia S. Lucia",
+                    "orario": "17:12"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "15:10",
-            "orario_arrivo": "18:49",
-            "nome_treno": "Frecciarossa 1000 9547",
-            "prezzo_biglietto": "110,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9645",
+            "fermate": [
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "14:50"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "15:00"
+                },
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "15:50"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "16:00",
-            "orario_arrivo": "19:10",
-            "nome_treno": "Frecciarossa 1000 9645",
-            "prezzo_biglietto": "102,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9559",
+            "fermate": [
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "17:00"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "17:10"
+                },
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "18:02"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "16:10",
-            "orario_arrivo": "19:49",
-            "nome_treno": "Frecciarossa 9551",
-            "prezzo_biglietto": "95,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9759",
+            "fermate": [
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "18:40"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "18:50"
+                },
+                {
+                    "stazione": "Rho-Fiera Milano",
+                    "orario": "19:26"
+                },
+                {
+                    "stazione": "Milano Porta Garibaldi",
+                    "orario": "19:40"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "16:30",
-            "orario_arrivo": "19:40",
-            "nome_treno": "Frecciarossa 1000 9647",
-            "prezzo_biglietto": "81,90"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9501",
+            "fermate": [
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "07:00"
+                },
+                {
+                    "stazione": "Napoli Afragola",
+                    "orario": "07:56"
+                },
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "08:12"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "17:00",
-            "orario_arrivo": "20:35",
-            "nome_treno": "Frecciarossa 1000 9397",
-            "prezzo_biglietto": "95,00"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "8327",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "06:10"
+                },
+                {
+                    "stazione": "Milano Rogoredo",
+                    "orario": "06:20"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "06:56"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "07:27"
+                },
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "08:14"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "09:43"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "10:02"
+                },
+                {
+                    "stazione": "Caserta",
+                    "orario": "11:22"
+                },
+                {
+                    "stazione": "Benevento",
+                    "orario": "12:00"
+                },
+                {
+                    "stazione": "Foggia",
+                    "orario": "13:25"
+                },
+                {
+                    "stazione": "Barletta",
+                    "orario": "13:53"
+                },
+                {
+                    "stazione": "Bari Centrale",
+                    "orario": "14:45"
+                },
+                {
+                    "stazione": "Brindisi",
+                    "orario": "16:07"
+                },
+                {
+                    "stazione": "Lecce",
+                    "orario": "16:35"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "17:10",
-            "orario_arrivo": "20:50",
-            "nome_treno": "Frecciarossa 1000 9555",
-            "prezzo_biglietto": "85,90"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9547",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "15:10"
+                },
+                {
+                    "stazione": "Milano Rogoredo",
+                    "orario": "15:30"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "15:56"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "16:24"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "17:25",
-            "orario_arrivo": "20:42",
-            "nome_treno": "Frecciarossa 1000 9651",
-            "prezzo_biglietto": "81,90"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "35527",
+            "fermate": [
+                {
+                    "stazione": "Venezia S. Lucia",
+                    "orario": "15:26"
+                },
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "15:38"
+                },
+                {
+                    "stazione": "Padova",
+                    "orario": "15:56"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "16:59"
+                }
+            ]
         },
         {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "18:00",
-            "orario_arrivo": "21:10",
-            "nome_treno": "Frecciarossa 1000 9653",
-            "prezzo_biglietto": "81,90"
-        },
-        {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "18:10",
-            "orario_arrivo": "21:49",
-            "nome_treno": "Frecciarossa 1000 9559",
-            "prezzo_biglietto": "95,00"
-        },
-        {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "18:35",
-            "orario_arrivo": "21:34",
-            "nome_treno": "Frecciarossa 9657",
-            "prezzo_biglietto": "85,90"
-        },
-        {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "19:10",
-            "orario_arrivo": "23:05",
-            "nome_treno": "Frecciarossa 1000 9665",
-            "prezzo_biglietto": "81,90"
-        },
-        {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "19:25",
-            "orario_arrivo": "22:40",
-            "nome_treno": "Frecciarossa 9663",
-            "prezzo_biglietto": "85,90"
-        },
-        {
-            "stazione_partenza": "Milano Centrale",
-            "stazione_arrivo": "Roma Termini",
-            "orario_partenza": "20:10",
-            "orario_arrivo": "23:49",
-            "nome_treno": "Frecciarossa 9567",
-            "prezzo_biglietto": "81,90"
+            "convoglio": "Frecciarossa 1000",
+            "treno": "8508",
+            "fermate": [
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "11:36"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "12:16"
+                },
+                {
+                    "stazione": "Verona Porta Nuova",
+                    "orario": "13:08"
+                }
+            ]
         }
     ]
 }

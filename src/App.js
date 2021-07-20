@@ -6,10 +6,10 @@ import './style.css';
 import ControllerRicerca from "./controllo/ControllerRicerca";
 
 /**
- * + App {treni}
- *    + Ricerca {stazioni, ricercaPartenza, ricercaArrivo, ricercaOraPartenza, ricercaOraArrivo}
- *    + TabellaSoluzioni {treni, ricercaPartenza, ricercaArrivo, ricercaOraPartenza, ricercaOraArrivo}
- *        + RigaSoluzioneTreno {treno}
+ * + App
+ *    + Ricerca
+ *    + TabellaSoluzioni
+ *        + RigaSoluzioneTreno
  */
 
 /** APP **/
@@ -239,14 +239,6 @@ class TabellaSoluzioni extends React.Component {
     partenza = parseInt(partenza.substring(0, 2));
     arrivo = parseInt(arrivo.substring(0, 2));
     return partenza >= min && arrivo <= max ? true : false;
-  }
-
-  upddate() {
-    if(this._soluzioni) {
-      
-    } else {
-
-    }
   }
 
   render() {

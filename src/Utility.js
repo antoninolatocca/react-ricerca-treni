@@ -1,4 +1,4 @@
-const FRECCE = require('./data-2.json');
+const FRECCE = require('./data.json');
 
 Array.prototype.findFermateByName = function(stazione){
     let pos = -1;
