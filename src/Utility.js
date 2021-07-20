@@ -30,7 +30,32 @@ class Utility {
 
     static displayDigit(n) {
         return (n < 10) ? '0' + n : n;
-      }
+    }
+
+    static ricercaTreni(partenza, arrivo, treni) {
+        let _soluzioni = [];
+        treni.forEach(treno => {
+            treno.fermate.forEach(fermata => {
+                if (fermata.stazione == partenza && fermata != treno.fermate[treno.fermate.length - 1]) {
+                    let _pos = treno.fermate.indexOf(fermata);
+                    let _soluzione_temp = treno.fermate.slice(_pos);
+                    _soluzione_temp.slice(1).forEach(fermata_arrivo => {
+                        if (fermata_arrivo.stazione == arrivo) {
+                            let _pos_arrivo = treno.fermate.indexOf(fermata_arrivo);
+                            let _treno = treno;
+                            console.log(_treno);
+                            _treno.fermate = treno.fermate.slice(_pos, _pos_arrivo);
+                            _soluzioni.push(_treno);
+                        }
+                    });
+                }
+            });
+        });
+        console.log(_soluzioni.length + ' Soluzioni da ' + partenza + ' a ' + arrivo);
+        console.log('Restituisco le soluzioni: ');
+        console.log(_soluzioni);
+        return _soluzioni;
+    }
 
 }
 

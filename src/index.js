@@ -8,4 +8,4 @@ const TRENI = json.treni;
 
 const FRECCE = require('./data-2.json');
 
-ReactDOM.render(<App treni={TRENI} frecce={FRECCE}/>, document.getElementById('root'));
+ReactDOM.render(<App treni={FRECCE.treni}/>, document.getElementById('root'));

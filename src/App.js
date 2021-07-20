@@ -6,37 +6,105 @@ import './style.css';
 
 /**
  * + App {treni}
- *    + Ricerca {ricercaPartenza, ricercaArrivo, ricercaOraPartenza, ricercaOraArrivo}
+ *    + Ricerca {stazioni, ricercaPartenza, ricercaArrivo, ricercaOraPartenza, ricercaOraArrivo}
  *    + TabellaSoluzioni {treni, ricercaPartenza, ricercaArrivo, ricercaOraPartenza, ricercaOraArrivo}
  *        + RigaSoluzioneTreno {treno}
  */
 
-class RigaSoluzioneTreno extends React.Component {
+/** APP **/
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    const _today = new Date();
+    const _h = _today.getHours();
+    this.state = {
+      ricercaPartenza: 'Milano Centrale',
+      ricercaArrivo: 'Roma Termini',
+      ricercaOraInizio: _h,
+      ricercaOraFine: '23'
+    };
+
+    this.handleRicercaPartenzaChange = this.handleRicercaPartenzaChange.bind(
+      this
+    );
+    this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(
+      this
+    );
+
+    this.handleRicercaOraInizioChange = this.handleRicercaOraInizioChange.bind(
+      this
+    );
+    this.handleRicercaOraFineChange = this.handleRicercaOraFineChange.bind(
+      this
+    );
+
+    this.getListaStazioni();
+  }
+
+  handleRicercaPartenzaChange(partenza) {
+    this.setState({
+      ricercaPartenza: partenza
+    });
+  }
+
+  handleRicercaArrivoChange(arrivo) {
+    this.setState({
+      ricercaArrivo: arrivo
+    });
+  }
+
+  handleRicercaOraInizioChange(inizio) {
+    this.setState({
+      ricercaOraInizio: inizio
+    });
+  }
+
+  handleRicercaOraFineChange(fine) {
+    this.setState({
+      ricercaOraFine: fine
+    });
+  }
+
+  getListaStazioni() {
+    this._stazioni = new Set();
+    this.props.treni.forEach(tratta => {
+        tratta.fermate.forEach(fermata => {
+            this._stazioni.add(fermata.stazione);
+        })
+    });
+    console.log(this._stazioni);
+  }
 
   render() {
-    const treno = this.props.treno;
     return (
-      <tr>
-        <td>
-          {treno.stazione_partenza}
-          <br />
-          <span className="font-bold">{treno.orario_partenza}</span>
-        </td>
-        <td>
-          {treno.stazione_arrivo}
-          <br />
-          <span className="font-bold">{treno.orario_arrivo}</span>
-        </td>
-        <td>
-          <b>{Utility.getHourDiff(treno.orario_partenza, treno.orario_arrivo)}</b>
-        </td>
-        <td>{treno.nome_treno}</td>
-        <td className="font-bold">&euro;{treno.prezzo_biglietto}</td>
-      </tr>
+      <div className="container">
+        <Ricerca
+          stazioni={this._stazioni}
+
+          ricercaPartenza={this.state.ricercaPartenza}
+          ricercaArrivo={this.state.ricercaArrivo}
+          ricercaOraInizio={this.state.ricercaOraInizio}
+          ricercaOraFine={this.state.ricercaOraFine}
+
+          onFilterPartenzaChange={this.handleRicercaPartenzaChange}
+          onFilterArrivoChange={this.handleRicercaArrivoChange}
+          onFilterOraInizioChange={this.handleRicercaOraInizioChange}
+          onFilterOraFineChange={this.handleRicercaOraFineChange}
+        />
+        <TabellaSoluzioni
+          treni={this.props.treni}
+          ricercaPartenza={this.state.ricercaPartenza}
+          ricercaArrivo={this.state.ricercaArrivo}
+          ricercaOraInizio={this.state.ricercaOraInizio}
+          ricercaOraFine={this.state.ricercaOraFine}
+        />
+      </div>
     );
   }
 }
 
+
+/** + RICERCA */
 class Ricerca extends React.Component {
   constructor(props) {
     super(props);
@@ -153,35 +221,74 @@ class Ricerca extends React.Component {
   }
 }
 
+
+/** + TABELLA */
 class TabellaSoluzioni extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    console.log('Costruisco la tabella');
+    this._ricercaPartenza = this.props.ricercaPartenza;
+    this._ricercaArrivo = this.props.ricercaArrivo;
+    this._ricercaInizio = this.props.ricercaOraInizio;
+    this._ricercaFine = this.props.ricercaOraFine;
+
+    console.log('Cerco soluzioni');
+    
+    this._soluzioni = [];
+    console.log(this._soluzioni);
+
+  }
+
   isInRange(partenza, arrivo, min, max) {
+    console.log('Confronto con gli orari');
     partenza = parseInt(partenza.substring(0, 2));
     arrivo = parseInt(arrivo.substring(0, 2));
     return partenza >= min && arrivo <= max ? true : false;
   }
 
+  upddate() {
+    if(this._soluzioni) {
+      
+    } else {
+
+    }
+  }
+
   render() {
     const righe = [];
-    const ricercaPartenza = this.props.ricercaPartenza;
-    const ricercaArrivo = this.props.ricercaArrivo;
-    const ricercaInizio = this.props.ricercaOraInizio;
-    const ricercaFine = this.props.ricercaOraFine;
 
-    this.props.treni.forEach(treno => {
-      if (
-        treno.stazione_partenza.toUpperCase() ===
-          ricercaPartenza.toUpperCase() &&
-        treno.stazione_arrivo.toUpperCase() === ricercaArrivo.toUpperCase() &&
-        this.isInRange(
-          treno.orario_partenza,
-          treno.orario_arrivo,
-          ricercaInizio,
-          ricercaFine
-        )
-      ) {
-        righe.push(<RigaSoluzioneTreno treno={treno} key={treno.nome_treno} />);
-      }
-    });
+    this._soluzioni = Utility.ricercaTreni(this._ricercaPartenza, this._ricercaArrivo, this.props.treni);
+    console.log('Ho ricevuto le solzuioni: ');
+    console.log(this._soluzioni);
+
+    /**
+    if(this._soluzioni.length > 0) {
+      console.log('Ci sono soluzioni');
+      this._soluzioni.forEach(soluzione => {
+        console.log('Controllo gli orari');
+        if(this.isInRange(
+          soluzione.fermate[0].orario,
+          soluzione.fermata[soluzione.fermate.length -1].orario,
+          this._ricercaInizio,
+          this._ricercaFine
+        )) {
+          console.log('Soluzione in orario');
+        } else {
+          console.log('Soluzione fuori orario');
+        }
+      });
+    }
+    **/
+
+    if(this._soluzioni.length > 0) {
+      this._soluzioni.forEach(soluzione => {
+        righe.push(<RigaSoluzioneTreno treno={soluzione} key={soluzione.treno} />);
+      })
+    } else {
+      righe.push("Nessun Risultato") 
+    }
 
     return (
       <table>
@@ -191,7 +298,6 @@ class TabellaSoluzioni extends React.Component {
             <th>Arrivo</th>
             <th>Durata</th>
             <th>Treno</th>
-            <th>Prezzo</th>
           </tr>
         </thead>
         <tbody>{righe}</tbody>
@@ -200,93 +306,33 @@ class TabellaSoluzioni extends React.Component {
   }
 }
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    const _today = new Date();
-    const _h = _today.getHours();
-    this.state = {
-      ricercaPartenza: 'Milano Centrale',
-      ricercaArrivo: 'Roma Termini',
-      ricercaOraInizio: _h,
-      ricercaOraFine: '23'
-    };
 
-    this.handleRicercaPartenzaChange = this.handleRicercaPartenzaChange.bind(
-      this
-    );
-    this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(
-      this
-    );
-
-    this.handleRicercaOraInizioChange = this.handleRicercaOraInizioChange.bind(
-      this
-    );
-    this.handleRicercaOraFineChange = this.handleRicercaOraFineChange.bind(
-      this
-    );
-
-    this.getListaStazioni();
-  }
-
-  handleRicercaPartenzaChange(partenza) {
-    this.setState({
-      ricercaPartenza: partenza
-    });
-  }
-
-  handleRicercaArrivoChange(arrivo) {
-    this.setState({
-      ricercaArrivo: arrivo
-    });
-  }
-
-  handleRicercaOraInizioChange(inizio) {
-    this.setState({
-      ricercaOraInizio: inizio
-    });
-  }
-
-  handleRicercaOraFineChange(fine) {
-    this.setState({
-      ricercaOraFine: fine
-    });
-  }
-
-  getListaStazioni() {
-    this._stazioni = new Set();
-    this.props.frecce.treni.forEach(tratta => {
-        tratta.fermate.forEach(fermata => {
-            this._stazioni.add(fermata.stazione);
-        })
-    });
-    console.log(this._stazioni);
-  }
+/** + + RIGA */
+class RigaSoluzioneTreno extends React.Component {
 
   render() {
+    const treno = this.props.treno;
+
+    const _orario_partenza = treno.fermate[0].orario;
+    const _orario_arrivo = treno.fermate[treno.fermate.length -1].orario;
+
     return (
-      <div className="container">
-        <Ricerca
-          stazioni={this._stazioni}
-
-          ricercaPartenza={this.state.ricercaPartenza}
-          ricercaArrivo={this.state.ricercaArrivo}
-          ricercaOraInizio={this.state.ricercaOraInizio}
-          ricercaOraFine={this.state.ricercaOraFine}
-
-          onFilterPartenzaChange={this.handleRicercaPartenzaChange}
-          onFilterArrivoChange={this.handleRicercaArrivoChange}
-          onFilterOraInizioChange={this.handleRicercaOraInizioChange}
-          onFilterOraFineChange={this.handleRicercaOraFineChange}
-        />
-        <TabellaSoluzioni
-          treni={this.props.treni}
-          ricercaPartenza={this.state.ricercaPartenza}
-          ricercaArrivo={this.state.ricercaArrivo}
-          ricercaOraInizio={this.state.ricercaOraInizio}
-          ricercaOraFine={this.state.ricercaOraFine}
-        />
-      </div>
+      <tr>
+        <td>
+          {treno.fermate[0].stazione}
+          <br />
+          <span className="font-bold">{_orario_partenza}</span>
+        </td>
+        <td>
+          {treno.fermate[treno.fermate.length -1].stazione}
+          <br />
+          <span className="font-bold">{_orario_arrivo}</span>
+        </td>
+        <td>
+          <b>{Utility.getHourDiff(_orario_partenza, _orario_arrivo)}</b>
+        </td>
+        <td>{treno.convoglio} <b>{treno.treno}</b></td>
+      </tr>
     );
   }
 }
