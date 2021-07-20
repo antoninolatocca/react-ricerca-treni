@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import Utility from './Utility';
 
 import './style.css';
+import ControllerRicerca from "./controllo/ControllerRicerca";
 
 /**
  * + App {treni}
@@ -13,20 +14,23 @@ import './style.css';
 
 /** APP **/
 class App extends React.Component {
+  static singleton;
+
   constructor(props) {
     super(props);
+    App.singleton = this;
+    this._controllerRicerca = new ControllerRicerca();
     const _today = new Date();
     const _h = _today.getHours();
+    this._stazioni = Utility.getListaStazioni();
     this.state = {
+      treni: Utility.treni.treni,
       ricercaPartenza: 'Milano Centrale',
       ricercaArrivo: 'Roma Termini',
       ricercaOraInizio: _h,
       ricercaOraFine: '23'
     };
 
-    this.handleRicercaPartenzaChange = this.handleRicercaPartenzaChange.bind(
-      this
-    );
     this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(
       this
     );
@@ -37,19 +41,17 @@ class App extends React.Component {
     this.handleRicercaOraFineChange = this.handleRicercaOraFineChange.bind(
       this
     );
-
-    this.getListaStazioni();
   }
 
-  handleRicercaPartenzaChange(partenza) {
-    this.setState({
-      ricercaPartenza: partenza
-    });
+  get controllerRicerca(){
+    return this._controllerRicerca;
   }
+
 
   handleRicercaArrivoChange(arrivo) {
     this.setState({
-      ricercaArrivo: arrivo
+      ricercaArrivo: arrivo,
+      treni: Utility.ricercaTreni(this.state.ricercaPartenza, arrivo)
     });
   }
 
@@ -65,15 +67,7 @@ class App extends React.Component {
     });
   }
 
-  getListaStazioni() {
-    this._stazioni = new Set();
-    this.props.treni.forEach(tratta => {
-        tratta.fermate.forEach(fermata => {
-            this._stazioni.add(fermata.stazione);
-        })
-    });
-    console.log(this._stazioni);
-  }
+
 
   render() {
     return (
@@ -86,13 +80,12 @@ class App extends React.Component {
           ricercaOraInizio={this.state.ricercaOraInizio}
           ricercaOraFine={this.state.ricercaOraFine}
 
-          onFilterPartenzaChange={this.handleRicercaPartenzaChange}
           onFilterArrivoChange={this.handleRicercaArrivoChange}
           onFilterOraInizioChange={this.handleRicercaOraInizioChange}
           onFilterOraFineChange={this.handleRicercaOraFineChange}
         />
         <TabellaSoluzioni
-          treni={this.props.treni}
+            lista = {this.state.treni}
           ricercaPartenza={this.state.ricercaPartenza}
           ricercaArrivo={this.state.ricercaArrivo}
           ricercaOraInizio={this.state.ricercaOraInizio}
@@ -104,10 +97,14 @@ class App extends React.Component {
 }
 
 
+
 /** + RICERCA */
 class Ricerca extends React.Component {
+
   constructor(props) {
     super(props);
+
+    this._jsonStazioni = Utility.getListaStazioni();
 
     this.state = {
       start : this.props.ricercaOraInizio,
@@ -117,7 +114,7 @@ class Ricerca extends React.Component {
     };
 
     this._stazioni = [];
-    for(let item of this.props.stazioni.values()) {
+    for(let item of this._jsonStazioni.values()) {
       this._stazioni.push({value: item, label: item});
     };
 
@@ -150,8 +147,8 @@ class Ricerca extends React.Component {
   }
 
   handleRicercaPartenzaChange(val) {
-    this.setState({stazione_partenza: val.value});
-    this.props.onFilterPartenzaChange(val.value);
+    App.singleton.setState({ricercaPartenza: val.value});
+    App.singleton.controllerRicerca.handleSelectPartenzaChange(val.value);
   }
 
   handleRicercaArrivoChange(val) {
@@ -166,6 +163,7 @@ class Ricerca extends React.Component {
 
   handleRicercaOraFineChange(val) {
     this.setState({end: val.value});
+    console.log(App.singleton.state.ricercaPartenza);
     this.props.onFilterOraFineChange(val.value);
   }
 
@@ -234,11 +232,6 @@ class TabellaSoluzioni extends React.Component {
     this._ricercaInizio = this.props.ricercaOraInizio;
     this._ricercaFine = this.props.ricercaOraFine;
 
-    console.log('Cerco soluzioni');
-    
-    this._soluzioni = [];
-    console.log(this._soluzioni);
-
   }
 
   isInRange(partenza, arrivo, min, max) {
@@ -258,35 +251,17 @@ class TabellaSoluzioni extends React.Component {
 
   render() {
     const righe = [];
+    console.log(this._ricercaPartenza + " " + this._ricercaArrivo);
 
-    this._soluzioni = Utility.ricercaTreni(this._ricercaPartenza, this._ricercaArrivo, this.props.treni);
-    console.log('Ho ricevuto le solzuioni: ');
-    console.log(this._soluzioni);
+    console.log(this.props.lista);
 
-    /**
-    if(this._soluzioni.length > 0) {
-      console.log('Ci sono soluzioni');
-      this._soluzioni.forEach(soluzione => {
-        console.log('Controllo gli orari');
-        if(this.isInRange(
-          soluzione.fermate[0].orario,
-          soluzione.fermata[soluzione.fermate.length -1].orario,
-          this._ricercaInizio,
-          this._ricercaFine
-        )) {
-          console.log('Soluzione in orario');
-        } else {
-          console.log('Soluzione fuori orario');
-        }
-      });
-    }
-    **/
-
-    if(this._soluzioni.length > 0) {
-      this._soluzioni.forEach(soluzione => {
+    if(this.props.lista.length > 0) {
+      console.log("Ci sono i treni");
+      this.props.lista.forEach((soluzione) => {
         righe.push(<RigaSoluzioneTreno treno={soluzione} key={soluzione.treno} />);
-      })
+      });
     } else {
+      console.log(this.props.lista.length);
       righe.push("Nessun Risultato") 
     }
 
@@ -313,6 +288,7 @@ class RigaSoluzioneTreno extends React.Component {
   render() {
     const treno = this.props.treno;
 
+    const datoPartenza = treno.fermate.findFermateByName()
     const _orario_partenza = treno.fermate[0].orario;
     const _orario_arrivo = treno.fermate[treno.fermate.length -1].orario;
 

@@ -1,4 +1,22 @@
+const FRECCE = require('./data-2.json');
+
+Array.prototype.findFermateByName = function(stazione){
+    let pos = -1;
+    this.forEach((fermata, position )=>{
+        if (fermata.stazione == stazione ){
+            pos = position;
+            return pos;
+        }
+    });
+    return pos;
+};
+
 class Utility {
+
+    static get treni(){
+        return FRECCE;
+    }
+
 
     static getHourDiff(pStartHour, pEndHour) {
         let res = '';
@@ -32,25 +50,51 @@ class Utility {
         return (n < 10) ? '0' + n : n;
     }
 
-    static ricercaTreni(partenza, arrivo, treni) {
+    static getListaStazioni() {
+        let stazioni = new Set();
+        FRECCE.treni.forEach(tratta => {
+            tratta.fermate.forEach(fermata => {
+                stazioni.add(fermata.stazione);
+            })
+        });
+        return stazioni;
+    }
+
+    static ricercaTreni(partenza, arrivo) {
+        console.log("Partenza : " + partenza);
+        console.log("arrivo : " + arrivo);
         let _soluzioni = [];
-        treni.forEach(treno => {
+        FRECCE.treni.forEach(treno => {
             treno.fermate.forEach(fermata => {
+                console.log(fermata.stazione);
                 if (fermata.stazione == partenza && fermata != treno.fermate[treno.fermate.length - 1]) {
-                    let _pos = treno.fermate.indexOf(fermata);
-                    let _soluzione_temp = treno.fermate.slice(_pos);
-                    _soluzione_temp.slice(1).forEach(fermata_arrivo => {
-                        if (fermata_arrivo.stazione == arrivo) {
-                            let _pos_arrivo = treno.fermate.indexOf(fermata_arrivo);
-                            let _treno = treno;
-                            console.log(_treno);
-                            _treno.fermate = treno.fermate.slice(_pos, _pos_arrivo);
-                            _soluzioni.push(_treno);
-                        }
-                    });
+                    _soluzioni.push(treno);
+                    /*if (arrivo != ""){
+                        let _soluzione_temp = treno.fermate.slice(_pos);
+                        _soluzione_temp.slice(1).forEach(fermata_arrivo => {
+                            if (fermata_arrivo.stazione == arrivo) {
+                                let _pos_arrivo = treno.fermate.indexOf(fermata_arrivo);
+                                let _treno = treno;
+                                console.log(_treno);
+                                _treno.fermate = treno.fermate.slice(_pos, _pos_arrivo);
+                                _soluzioni.push(_treno);
+                            }
+                        });
+                    }*/
                 }
             });
         });
+        if (arrivo != "" && _soluzioni.length > 0){
+            let solution = [];
+            _soluzioni.forEach((treno, position)=> {
+                let posPartenza = treno.fermate.findFermateByName(partenza);
+                let posArrivo  = treno.fermate.findFermateByName(arrivo);
+                if (posPartenza < posArrivo){
+                    solution.push(treno);
+                }
+            });
+            return solution;
+        }
         console.log(_soluzioni.length + ' Soluzioni da ' + partenza + ' a ' + arrivo);
         console.log('Restituisco le soluzioni: ');
         console.log(_soluzioni);

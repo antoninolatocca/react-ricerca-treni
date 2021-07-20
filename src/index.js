@@ -6,6 +6,6 @@ import App from './App';
 let json = require('./data.json');
 const TRENI = json.treni;
 
-const FRECCE = require('./data-2.json');
 
-ReactDOM.render(<App treni={FRECCE.treni}/>, document.getElementById('root'));
+
+ReactDOM.render(<App />, document.getElementById('root'));
