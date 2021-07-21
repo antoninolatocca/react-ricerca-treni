@@ -20,7 +20,7 @@ class ControllerRicerca {
 
     getDatiRigaTreno(treno) {
         const _posPartenza = Utility.getPosFermata(treno, this._partenza);
-        const _posArrivo = Utility.getPosFermata(treno, this.arrivo);
+        const _posArrivo = Utility.getPosFermata(treno, this._arrivo);
 
         let result = {
             "stazione_partenza": treno.fermate[0].stazione,
