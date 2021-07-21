@@ -545,6 +545,182 @@
                     "orario": "13:08"
                 }
             ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9528",
+            "fermate": [
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "13:36"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "14:00"
+                },
+                {
+                    "stazione": "Milano Rogoredo",
+                    "orario": "14:41"
+                },
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "14:50"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9555",
+            "fermate": [
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "19:14"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "20:45"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "21:00"
+                },
+                {
+                    "stazione": "Napoli Afragola",
+                    "orario": "21:58"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "23:00"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9753",
+            "fermate": [
+                {
+                    "stazione": "Milano Porta Garibaldi",
+                    "orario": "18:13"
+                },
+                {
+                    "stazione": "Brescia",
+                    "orario": "18:53"
+                },
+                {
+                    "stazione": "Desenzano del Garda-Sirmione",
+                    "orario": "19:08"
+                },
+                {
+                    "stazione": "Verona Porta Nuova",
+                    "orario": "19:28"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9524",
+            "fermate": [
+                {
+                    "stazione": "Salerno",
+                    "orario": "07:44"
+                },
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "08:40"
+                },
+                {
+                    "stazione": "Napoli Afragola",
+                    "orario": "08:58"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "09:55"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9514",
+            "fermate": [
+                {
+                    "stazione": "Potenza Centrale",
+                    "orario": "07:17"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "08:46"
+                },
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "09:40"
+                },
+                {
+                    "stazione": "Napoli Afragola",
+                    "orario": "09:58"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "11:10"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "11:20"
+                },
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "12:55"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "13:36"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "14:00"
+                },
+                {
+                    "stazione": "Milano Rogoredo",
+                    "orario": "14:41"
+                },
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "14:50"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9648",
+            "fermate": [
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "14:55"
+                },
+                {
+                    "stazione": "Napoli Afragola",
+                    "orario": "15:10"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "16:20"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "18:26"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "14:00"
+                },
+                {
+                    "stazione": "Milano Rogoredo",
+                    "orario": "19:20"
+                },
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "19:35"
+                }
+            ]
         }
     ]
 }
