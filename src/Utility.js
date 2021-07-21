@@ -61,26 +61,11 @@ class Utility {
     }
 
     static ricercaTreni(partenza, arrivo) {
-        console.log("Partenza : " + partenza);
-        console.log("arrivo : " + arrivo);
         let _soluzioni = [];
         FRECCE.treni.forEach(treno => {
             treno.fermate.forEach(fermata => {
-                console.log(fermata.stazione);
                 if (fermata.stazione == partenza && fermata != treno.fermate[treno.fermate.length - 1]) {
                     _soluzioni.push(treno);
-                    /*if (arrivo != ""){
-                        let _soluzione_temp = treno.fermate.slice(_pos);
-                        _soluzione_temp.slice(1).forEach(fermata_arrivo => {
-                            if (fermata_arrivo.stazione == arrivo) {
-                                let _pos_arrivo = treno.fermate.indexOf(fermata_arrivo);
-                                let _treno = treno;
-                                console.log(_treno);
-                                _treno.fermate = treno.fermate.slice(_pos, _pos_arrivo);
-                                _soluzioni.push(_treno);
-                            }
-                        });
-                    }*/
                 }
             });
         });
@@ -95,10 +80,11 @@ class Utility {
             });
             return solution;
         }
-        console.log(_soluzioni.length + ' Soluzioni da ' + partenza + ' a ' + arrivo);
-        console.log('Restituisco le soluzioni: ');
-        console.log(_soluzioni);
         return _soluzioni;
+    }
+
+    static getPosFermata(treno, fermata) {
+        return treno.fermate.findFermateByName(fermata);
     }
 
 }

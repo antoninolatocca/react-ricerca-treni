@@ -67,8 +67,6 @@ class App extends React.Component {
     });
   }
 
-
-
   render() {
     return (
       <div className="container">
@@ -80,12 +78,11 @@ class App extends React.Component {
           ricercaOraInizio={this.state.ricercaOraInizio}
           ricercaOraFine={this.state.ricercaOraFine}
 
-          onFilterArrivoChange={this.handleRicercaArrivoChange}
           onFilterOraInizioChange={this.handleRicercaOraInizioChange}
           onFilterOraFineChange={this.handleRicercaOraFineChange}
         />
         <TabellaSoluzioni
-            lista = {this.state.treni}
+          lista={this.state.treni}
           ricercaPartenza={this.state.ricercaPartenza}
           ricercaArrivo={this.state.ricercaArrivo}
           ricercaOraInizio={this.state.ricercaOraInizio}
@@ -153,7 +150,7 @@ class Ricerca extends React.Component {
 
   handleRicercaArrivoChange(val) {
     this.setState({stazione_arrivo: val.value});
-    this.props.onFilterArrivoChange(val.value);
+    App.singleton.controllerRicerca.handleSelectArrivoChange(val.value);
   }
 
   handleRicercaOraInizioChange(val) {
@@ -163,7 +160,6 @@ class Ricerca extends React.Component {
 
   handleRicercaOraFineChange(val) {
     this.setState({end: val.value});
-    console.log(App.singleton.state.ricercaPartenza);
     this.props.onFilterOraFineChange(val.value);
   }
 
@@ -178,7 +174,7 @@ class Ricerca extends React.Component {
                 id="stazionePartenza"
                 value={this.state.ricercaPartenza}
                 options={this._stazioni}
-                placeholder="Stazione di partenza"
+                placeholder={(this.state.ricercaPartenza) ? this.state.ricercaPartenza : "Stazione di partenza"}
                 onChange={this.handleRicercaPartenzaChange.bind(this)}
               />
             </div>
@@ -188,7 +184,7 @@ class Ricerca extends React.Component {
                 id="stazioneArrivo"
                 value={this.state.ricercaArrivo}
                 options={this._stazioni}
-                placeholder="Stazione di arrivo"
+                placeholder={(this.state.ricercaArrivo) ? this.state.ricercaArrivo : "Stazione di arrivo"}
                 onChange={this.handleRicercaArrivoChange.bind(this)}
               />
             </div>
@@ -226,34 +222,20 @@ class TabellaSoluzioni extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log('Costruisco la tabella');
     this._ricercaPartenza = this.props.ricercaPartenza;
     this._ricercaArrivo = this.props.ricercaArrivo;
     this._ricercaInizio = this.props.ricercaOraInizio;
     this._ricercaFine = this.props.ricercaOraFine;
-
-  }
-
-  isInRange(partenza, arrivo, min, max) {
-    console.log('Confronto con gli orari');
-    partenza = parseInt(partenza.substring(0, 2));
-    arrivo = parseInt(arrivo.substring(0, 2));
-    return partenza >= min && arrivo <= max ? true : false;
   }
 
   render() {
     const righe = [];
-    console.log(this._ricercaPartenza + " " + this._ricercaArrivo);
-
-    console.log(this.props.lista);
 
     if(this.props.lista.length > 0) {
-      console.log("Ci sono i treni");
       this.props.lista.forEach((soluzione) => {
         righe.push(<RigaSoluzioneTreno treno={soluzione} key={soluzione.treno} />);
       });
     } else {
-      console.log(this.props.lista.length);
       righe.push("Nessun Risultato") 
     }
 
@@ -280,24 +262,22 @@ class RigaSoluzioneTreno extends React.Component {
   render() {
     const treno = this.props.treno;
 
-    const datoPartenza = treno.fermate.findFermateByName()
-    const _orario_partenza = treno.fermate[0].orario;
-    const _orario_arrivo = treno.fermate[treno.fermate.length -1].orario;
+    let dati = App.singleton.controllerRicerca.getDatiRigaTreno(treno);
 
     return (
       <tr>
         <td>
-          {treno.fermate[0].stazione}
+          {dati.stazione_partenza}
           <br />
-          <span className="font-bold">{_orario_partenza}</span>
+          <span className="font-bold">{dati.orario_partenza}</span>
         </td>
         <td>
-          {treno.fermate[treno.fermate.length -1].stazione}
+          {dati.stazione_arrivo}
           <br />
-          <span className="font-bold">{_orario_arrivo}</span>
+          <span className="font-bold">{dati.orario_arrivo}</span>
         </td>
         <td>
-          <b>{Utility.getHourDiff(_orario_partenza, _orario_arrivo)}</b>
+          <b>{dati.durata}</b>
         </td>
         <td>{treno.convoglio} <b>{treno.treno}</b></td>
       </tr>
