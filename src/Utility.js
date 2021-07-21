@@ -57,6 +57,7 @@ class Utility {
                 stazioni.add(fermata.stazione);
             })
         });
+        stazioni = [...stazioni].sort();
         return stazioni;
     }
 
