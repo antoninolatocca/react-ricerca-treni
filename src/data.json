@@ -400,7 +400,35 @@
                 },
                 {
                     "stazione": "Milano Porta Garibaldi",
-                    "orario": "19:40"
+                    "orario": "19:43"
+                },
+                {
+                    "stazione": "Brescia",
+                    "orario": "20:23"
+                },
+                {
+                    "stazione": "Verona Porta Nuova",
+                    "orario": "20:55"
+                },
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "22:05"
+                },
+                {
+                    "stazione": "Latisana-Lignano-Bibione",
+                    "orario": "22:42"
+                },
+                {
+                    "stazione": "Cervignano-Aquileia-Grado",
+                    "orario": "23:01"
+                },
+                {
+                    "stazione": "Trieste Airport",
+                    "orario": "23:10"
+                },
+                {
+                    "stazione": "Monfalcone",
+                    "orario": "23:15"
                 }
             ]
         },
@@ -719,6 +747,198 @@
                 {
                     "stazione": "Milano Centrale",
                     "orario": "19:35"
+                }
+            ]
+        },
+        {
+            "convoglio": "InterCityNotte",
+            "treno": "754",
+            "fermate": [
+                {
+                    "stazione": "Lecce",
+                    "orario": "20:20"
+                },
+                {
+                    "stazione": "Brindisi",
+                    "orario": "20:48"
+                },
+                {
+                    "stazione": "Ostuni",
+                    "orario": "21:11"
+                },
+                {
+                    "stazione": "Fasano",
+                    "orario": "21:26"
+                },
+                {
+                    "stazione": "Monopoli",
+                    "orario": "21:37"
+                },
+                {
+                    "stazione": "Bari Centrale",
+                    "orario": "22:09"
+                },
+                {
+                    "stazione": "Barletta",
+                    "orario": "22:46"
+                },
+                {
+                    "stazione": "Foggia",
+                    "orario": "23:25"
+                },
+                {
+                    "stazione": "Pescara Centrale",
+                    "orario": "01:18"
+                },
+                {
+                    "stazione": "Ancona",
+                    "orario": "02:49"
+                },
+                {
+                    "stazione": "Pesaro",
+                    "orario": "03:23"
+                },
+                {
+                    "stazione": "Rimini",
+                    "orario": "03:52"
+                },
+                {
+                    "stazione": "Cesena",
+                    "orario": "04:10"
+                },
+                {
+                    "stazione": "Forli",
+                    "orario": "04:23"
+                },
+                {
+                    "stazione": "Faenza",
+                    "orario": "04:33"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "05:15"
+                },
+                {
+                    "stazione": "Piacenza",
+                    "orario": "06:56"
+                },
+                {
+                    "stazione": "Voghera",
+                    "orario": "07:33"
+                },
+                {
+                    "stazione": "Tortona",
+                    "orario": "07:44"
+                },
+                {
+                    "stazione": "Alessandria",
+                    "orario": "08:05"
+                },
+                {
+                    "stazione": "Asti",
+                    "orario": "08:30"
+                },
+                {
+                    "stazione": "Torino Lingotto",
+                    "orario": "09:03"
+                },
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "09:11"
+                }
+            ]
+        },
+        {
+            "convoglio": "InterCityNotte",
+            "treno": "771",
+            "fermate": [
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "01:55"
+                },
+                {
+                    "stazione": "Arezzo",
+                    "orario": "04:25"
+                },
+                {
+                    "stazione": "Terontola-Cortona",
+                    "orario": "04:45"
+                },
+                {
+                    "stazione": "Chiusi-Chianciano Terme",
+                    "orario": "05:07"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "06:35"
+                }
+            ]
+        },
+        {
+            "convoglio": "InterCityNotte",
+            "treno": "799",
+            "fermate": [
+                {
+                    "stazione": "Genova Piazza Principe",
+                    "orario": "23:53"
+                },
+                {
+                    "stazione": "Genova Brignole",
+                    "orario": "00:02"
+                },
+                {
+                    "stazione": "Rapallo",
+                    "orario": "00:28"
+                },
+                {
+                    "stazione": "Chiavari",
+                    "orario": "00:38"
+                },
+                {
+                    "stazione": "La Spezia Centrale",
+                    "orario": "01:27"
+                },
+                {
+                    "stazione": "Pisa Centrale",
+                    "orario": "02:21"
+                },
+                {
+                    "stazione": "Livorno Centrale",
+                    "orario": "02:40"
+                },
+                {
+                    "stazione": "Grosseto",
+                    "orario": "03:57"
+                },
+                {
+                    "stazione": "Civitavecchia",
+                    "orario": "04:58"
+                }
+            ]
+        },
+        {
+            "convoglio": "InterCityNotte",
+            "treno": "795",
+            "fermate": [
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "13:33"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "13:43"
+                },
+                {
+                    "stazione": "Vercelli",
+                    "orario": "14:25"
+                },
+                {
+                    "stazione": "Novara",
+                    "orario": "14:43"
+                },
+                {
+                    "stazione": "Milano Porta Garibaldi",
+                    "orario": "15:32"
                 }
             ]
         }

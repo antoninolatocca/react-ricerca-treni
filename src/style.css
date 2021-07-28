@@ -22,6 +22,7 @@ tr {
   border: solid thin;
 }
 
+footer, 
 tbody tr:hover {
   background-color: red;
   color: white;

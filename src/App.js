@@ -28,7 +28,7 @@ class App extends React.Component {
       ricercaPartenza: 'Milano Centrale',
       ricercaArrivo: 'Roma Termini',
       ricercaOraInizio: _h,
-      ricercaOraFine: '23'
+      ricercaConvoglio: "Frecciarossa 1000"
     };
 
     this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(
@@ -36,9 +36,6 @@ class App extends React.Component {
     );
 
     this.handleRicercaOraInizioChange = this.handleRicercaOraInizioChange.bind(
-      this
-    );
-    this.handleRicercaOraFineChange = this.handleRicercaOraFineChange.bind(
       this
     );
   }
@@ -61,9 +58,9 @@ class App extends React.Component {
     });
   }
 
-  handleRicercaOraFineChange(fine) {
+  handleRicercaConvoglioChange(convoglio) {
     this.setState({
-      ricercaOraFine: fine
+      ricercaConvoglio: convoglio
     });
   }
 
@@ -76,18 +73,17 @@ class App extends React.Component {
           ricercaPartenza={this.state.ricercaPartenza}
           ricercaArrivo={this.state.ricercaArrivo}
           ricercaOraInizio={this.state.ricercaOraInizio}
-          ricercaOraFine={this.state.ricercaOraFine}
-
-          onFilterOraInizioChange={this.handleRicercaOraInizioChange}
-          onFilterOraFineChange={this.handleRicercaOraFineChange}
+          ricercaConvoglio={this.state.ricercaConvoglio}
         />
         <TabellaSoluzioni
           lista={this.state.treni}
           ricercaPartenza={this.state.ricercaPartenza}
           ricercaArrivo={this.state.ricercaArrivo}
           ricercaOraInizio={this.state.ricercaOraInizio}
-          ricercaOraFine={this.state.ricercaOraFine}
+          ricercaConvoglio={this.state.ricercaConvoglio}
         />
+
+        <ModalDettagli />
       </div>
     );
   }
@@ -102,17 +98,23 @@ class Ricerca extends React.Component {
     super(props);
 
     this._jsonStazioni = Utility.getListaStazioni();
+    this._jsonConvogli = Utility.getListaRotabili();
 
     this.state = {
       start : this.props.ricercaOraInizio,
-      end : this.props.ricercaOraFine,
       stazione_partenza : this.props.ricercaPartenza,
-      stazione_arrivo : this.props.ricercaArrivo
+      stazione_arrivo : this.props.ricercaArrivo,
+      convoglio: this.props.ricercaConvoglio
     };
 
     this._stazioni = [];
     for(let item of this._jsonStazioni.values()) {
       this._stazioni.push({value: item, label: item});
+    };
+
+    this._convogli = [];
+    for(let item of this._jsonConvogli.values()) {
+      this._convogli.push({value: item, label: item});
     };
 
     this._orari = [
@@ -155,12 +157,12 @@ class Ricerca extends React.Component {
 
   handleRicercaOraInizioChange(val) {
     this.setState({start: val.value});
-    this.props.onFilterOraInizioChange(val.value);
+    App.singleton.controllerRicerca.handleSelectOraInizioChange(val.value);
   }
 
-  handleRicercaOraFineChange(val) {
-    this.setState({end: val.value});
-    this.props.onFilterOraFineChange(val.value);
+  handleRicercaConvoglioChange(val) {
+    this.setState({convoglio: val.value});
+    App.singleton.controllerRicerca.handleSelectConvoglioChange(val.value);
   }
 
   render() {
@@ -189,23 +191,23 @@ class Ricerca extends React.Component {
               />
             </div>
             <div className="col form-group">
-              <label htmlFor="dalleOre">Dalle </label>
+              <label htmlFor="dalleOre">Ore </label>
               <Select
                 id="dalleOre"
                 value={this.state.start}
                 options={this._orari}
                 onChange={this.handleRicercaOraInizioChange.bind(this)}
-                placeholder={Utility.displayDigit(this.state.start)}
+                placeholder={Utility.displayDigit(this.state.start) + ":00"}
               />
             </div>
             <div className="col form-group">
-              <label htmlFor="alleOre">Alle </label>
+              <label htmlFor="convogli">Treno </label>
               <Select
-                id="alleOre"
-                value={this.state.end}
-                options={this._orari}
-                onChange={this.handleRicercaOraFineChange.bind(this)}
-                placeholder={Utility.displayDigit(this.state.end)}
+                id="convogli"
+                value={this.state.ricercaConvoglio}
+                options={this._convogli}
+                placeholder={(this.state.ricercaConvoglio) ? this.state.ricercaConvoglio : "Treno"}
+                onChange={this.handleRicercaConvoglioChange.bind(this)}
               />
             </div>
           </div>
@@ -225,7 +227,7 @@ class TabellaSoluzioni extends React.Component {
     this._ricercaPartenza = this.props.ricercaPartenza;
     this._ricercaArrivo = this.props.ricercaArrivo;
     this._ricercaInizio = this.props.ricercaOraInizio;
-    this._ricercaFine = this.props.ricercaOraFine;
+    this._convogli = this.props.ricercaConvoglio;
   }
 
   render() {
@@ -259,6 +261,18 @@ class TabellaSoluzioni extends React.Component {
 /** + + RIGA */
 class RigaSoluzioneTreno extends React.Component {
 
+  handleClickDettagli(button) {
+    let treno = Utility.getTrenoByNumber(button.target.id);
+    console.log(treno);
+    $('#titoloModal').html(treno.convoglio + " " + treno.treno);
+    let html = "<table class=\"table\"";
+    for (let i = 0; i < treno.fermate.length; i++) {
+      html += "<tr><td>" + treno.fermate[i].orario + "</td><td>" + treno.fermate[i].stazione + "</td></tr>";
+    }
+    $('#modalDettaglioBody').html(html + "</table>");
+    $('#modalDettaglioTreno').modal('show');
+  }
+
   render() {
     const treno = this.props.treno;
 
@@ -279,10 +293,33 @@ class RigaSoluzioneTreno extends React.Component {
         <td>
           <b>{dati.durata}</b>
         </td>
-        <td>{treno.convoglio} <b>{treno.treno}</b></td>
+        <td>{treno.convoglio} <b>{treno.treno}</b> <i id={this.props.treno.treno} className="fas fa-info-circle" type="button" data-toggle="modal" data-target="#modalDettaglioTreno" onClick={this.handleClickDettagli.bind(this)}></i></td>
       </tr>
     );
   }
+}
+
+class ModalDettagli extends React.Component {
+
+  render() {
+    return(
+      <div className="modal fade" id="modalDettaglioTreno" tabIndex="-1" role="dialog" aria-labelledby="titoloModal" aria-hidden="true">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="titoloModal">Dettagli treno</h5>
+              <button type="button" className="btn btn-light" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i className="fas fa-times"></i></span>
+              </button>
+            </div>
+            <div className="modal-body" id="modalDettaglioBody">
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
 }
 
 export default App;

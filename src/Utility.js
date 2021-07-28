@@ -61,7 +61,16 @@ class Utility {
         return stazioni;
     }
 
-    static ricercaTreni(partenza, arrivo) {
+    static getListaRotabili() {
+        let rotabili = new Set();
+        FRECCE.treni.forEach(treno => {
+            rotabili.add(treno.convoglio);
+        });
+        rotabili = [...rotabili].sort();
+        return rotabili;
+    }
+
+    static ricercaTreni(partenza, arrivo, convoglio) {
         let _soluzioni = [];
         FRECCE.treni.forEach(treno => {
             treno.fermate.forEach(fermata => {
@@ -71,21 +80,35 @@ class Utility {
             });
         });
         if (arrivo != "" && _soluzioni.length > 0){
-            let solution = [];
+            let sol_arrivo = [];
             _soluzioni.forEach((treno, position)=> {
                 let posPartenza = treno.fermate.findFermateByName(partenza);
                 let posArrivo  = treno.fermate.findFermateByName(arrivo);
                 if (posPartenza < posArrivo){
-                    solution.push(treno);
+                    sol_arrivo.push(treno);
                 }
             });
-            return solution;
+            _soluzioni = sol_arrivo;
+        }
+        if(convoglio != "" && _soluzioni.length > 0){
+            let sol_convoglio = [];
+            _soluzioni.forEach(treno => {
+                if(treno.convoglio == convoglio) sol_convoglio.push(treno);
+            })
+            _soluzioni = sol_convoglio;
         }
         return _soluzioni;
     }
 
     static getPosFermata(treno, fermata) {
         return treno.fermate.findFermateByName(fermata);
+    }
+
+    static getTrenoByNumber(numero) {
+        for (let i = 0; i < FRECCE.treni.length; i++) {
+            if(FRECCE.treni[i].treno === numero) return FRECCE.treni[i];
+        }
+        return false;
     }
 
 }
