@@ -46,6 +46,16 @@ class Utility {
         return res;
     }
 
+    static isAfter(fermata, ricerca) {
+        if(parseInt(fermata[0]) > parseInt(ricerca[0])) return true;
+        if(parseInt(fermata[0]) < parseInt(ricerca[0])) return false;
+        if(parseInt(fermata[0]) === parseInt(ricerca[0])) {
+            if(ricerca[1]) {
+                return (parseInt(fermata[1]) >= parseInt(ricerca[1])) ? true : false;
+            } else return true;
+        }
+    }
+
     static displayDigit(n) {
         return (n < 10) ? '0' + n : n;
     }
@@ -70,7 +80,7 @@ class Utility {
         return rotabili;
     }
 
-    static ricercaTreni(partenza, arrivo, convoglio) {
+    static ricercaTreni(partenza, arrivo, orario, convoglio) {
         let _soluzioni = [];
         FRECCE.treni.forEach(treno => {
             treno.fermate.forEach(fermata => {
@@ -81,11 +91,24 @@ class Utility {
         });
         if (arrivo != "" && _soluzioni.length > 0){
             let sol_arrivo = [];
-            _soluzioni.forEach((treno, position)=> {
-                let posPartenza = treno.fermate.findFermateByName(partenza);
-                let posArrivo  = treno.fermate.findFermateByName(arrivo);
+            _soluzioni.forEach((treno)=> {
+                const posPartenza = treno.fermate.findFermateByName(partenza);
+                const posArrivo  = treno.fermate.findFermateByName(arrivo);
+
+                let esito;
+                if(orario) {
+                    const h_feramta = treno.fermate[posPartenza].orario.split(':');
+                    let h_ricerca = [];
+                    if(typeof orario === 'string') {
+                        h_ricerca = orario.split(":");
+                    } else if(typeof orario === 'number') {
+                        h_ricerca.push(orario.toString(10));
+                    }
+                    esito = this.isAfter(h_feramta, h_ricerca);
+                } else esito = true;
+                
                 if (posPartenza < posArrivo){
-                    sol_arrivo.push(treno);
+                    if(esito) sol_arrivo.push(treno);
                 }
             });
             _soluzioni = sol_arrivo;

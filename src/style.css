@@ -23,7 +23,8 @@ tr {
 }
 
 footer, 
-tbody tr:hover {
+tbody.hover-red tr.error, 
+tbody.hover-red tr:hover {
   background-color: red;
   color: white;
 }
@@ -66,4 +67,12 @@ table td {
   height: 38px !important;
   padding-left: 8px !important;
   padding-right: 8px !important;
+}
+
+tr.table-info td {
+  color: darkgray !important;
+}
+
+tr.table-active td {
+  font-weight: 700 !important;
 }

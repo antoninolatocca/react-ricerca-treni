@@ -10,6 +10,7 @@ import ControllerRicerca from "./controllo/ControllerRicerca";
  *    + Ricerca
  *    + TabellaSoluzioni
  *        + RigaSoluzioneTreno
+ *        + RigaZeroSoluzioni
  */
 
 /** APP **/
@@ -30,6 +31,7 @@ class App extends React.Component {
       ricercaOraInizio: _h,
       ricercaConvoglio: "Frecciarossa 1000"
     };
+    // this.state.treni = Utility.ricercaTreni(this.state.ricercaPartenza, this.state.ricercaArrivo, this.state.ricercaOraInizio, this.state.ricercaConvoglio);
 
     this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(
       this
@@ -38,29 +40,34 @@ class App extends React.Component {
     this.handleRicercaOraInizioChange = this.handleRicercaOraInizioChange.bind(
       this
     );
+
+    this.handleSelectConvoglioChange = this.handleRicercaConvoglioChange.bind(
+      this
+    );
   }
 
   get controllerRicerca(){
     return this._controllerRicerca;
   }
 
-
   handleRicercaArrivoChange(arrivo) {
     this.setState({
       ricercaArrivo: arrivo,
-      treni: Utility.ricercaTreni(this.state.ricercaPartenza, arrivo)
+      treni: Utility.ricercaTreni(this.state.ricercaPartenza, arrivo, this.state.ricercaOraInizio, this.state.ricercaConvoglio)
     });
   }
 
   handleRicercaOraInizioChange(inizio) {
     this.setState({
-      ricercaOraInizio: inizio
+      ricercaOraInizio: inizio,
+      treni: Utility.ricercaTreni(this.state.ricercaPartenza, this.ricercaArrivo, inizio, this.state.ricercaConvoglio)
     });
   }
 
   handleRicercaConvoglioChange(convoglio) {
     this.setState({
-      ricercaConvoglio: convoglio
+      ricercaConvoglio: convoglio,
+      treni: Utility.ricercaTreni(this.state.ricercaPartenza, this.ricercaArrivo, this.state.ricercaOraInizio, convoglio)
     });
   }
 
@@ -176,7 +183,7 @@ class Ricerca extends React.Component {
                 id="stazionePartenza"
                 value={this.state.ricercaPartenza}
                 options={this._stazioni}
-                placeholder={(this.state.ricercaPartenza) ? this.state.ricercaPartenza : "Stazione di partenza"}
+                placeholder={(this.state.stazione_partenza) ? this.state.stazione_partenza : "Stazione di partenza"}
                 onChange={this.handleRicercaPartenzaChange.bind(this)}
               />
             </div>
@@ -186,7 +193,7 @@ class Ricerca extends React.Component {
                 id="stazioneArrivo"
                 value={this.state.ricercaArrivo}
                 options={this._stazioni}
-                placeholder={(this.state.ricercaArrivo) ? this.state.ricercaArrivo : "Stazione di arrivo"}
+                placeholder={(this.state.stazione_arrivo) ? this.state.stazione_arrivo : "Stazione di arrivo"}
                 onChange={this.handleRicercaArrivoChange.bind(this)}
               />
             </div>
@@ -196,8 +203,8 @@ class Ricerca extends React.Component {
                 id="dalleOre"
                 value={this.state.start}
                 options={this._orari}
-                onChange={this.handleRicercaOraInizioChange.bind(this)}
                 placeholder={Utility.displayDigit(this.state.start) + ":00"}
+                onChange={this.handleRicercaOraInizioChange.bind(this)}
               />
             </div>
             <div className="col form-group">
@@ -206,7 +213,7 @@ class Ricerca extends React.Component {
                 id="convogli"
                 value={this.state.ricercaConvoglio}
                 options={this._convogli}
-                placeholder={(this.state.ricercaConvoglio) ? this.state.ricercaConvoglio : "Treno"}
+                placeholder={(this.state.convoglio) ? this.state.convoglio : "Treno"}
                 onChange={this.handleRicercaConvoglioChange.bind(this)}
               />
             </div>
@@ -231,14 +238,15 @@ class TabellaSoluzioni extends React.Component {
   }
 
   render() {
-    const righe = [];
+    let righe = [];
 
     if(this.props.lista.length > 0) {
       this.props.lista.forEach((soluzione) => {
         righe.push(<RigaSoluzioneTreno treno={soluzione} key={soluzione.treno} />);
       });
     } else {
-      righe.push("Nessun Risultato") 
+      righe = [];
+      righe.push(<RigaZeroSoluzioni key="0"/>); 
     }
 
     return (
@@ -251,7 +259,7 @@ class TabellaSoluzioni extends React.Component {
             <th>Treno</th>
           </tr>
         </thead>
-        <tbody>{righe}</tbody>
+        <tbody className="hover-red">{righe}</tbody>
       </table>
     );
   }
@@ -261,13 +269,15 @@ class TabellaSoluzioni extends React.Component {
 /** + + RIGA */
 class RigaSoluzioneTreno extends React.Component {
 
-  handleClickDettagli(button) {
-    let treno = Utility.getTrenoByNumber(button.target.id);
-    console.log(treno);
+  handleClickDettagli() {
+    let treno = Utility.getTrenoByNumber(this.props.treno.treno);
+    let fermateTreno = App.singleton.controllerRicerca.getFermateTreno(treno);
+
     $('#titoloModal').html(treno.convoglio + " " + treno.treno);
-    let html = "<table class=\"table\"";
+    let html = "<table className=\"table\"";
     for (let i = 0; i < treno.fermate.length; i++) {
-      html += "<tr><td>" + treno.fermate[i].orario + "</td><td>" + treno.fermate[i].stazione + "</td></tr>";
+      let classStyle = (fermateTreno.includes(treno.fermate[i].stazione)) ? "table-active" : "table-info";
+      html += "<tr className=" + classStyle + "><td>" + treno.fermate[i].orario + "</td><td>" + treno.fermate[i].stazione + "</td></tr>";
     }
     $('#modalDettaglioBody').html(html + "</table>");
     $('#modalDettaglioTreno').modal('show');
@@ -294,6 +304,22 @@ class RigaSoluzioneTreno extends React.Component {
           <b>{dati.durata}</b>
         </td>
         <td>{treno.convoglio} <b>{treno.treno}</b> <i id={this.props.treno.treno} className="fas fa-info-circle" type="button" data-toggle="modal" data-target="#modalDettaglioTreno" onClick={this.handleClickDettagli.bind(this)}></i></td>
+      </tr>
+    );
+  }
+}
+
+/** + + RIGAVUOTA */
+class RigaZeroSoluzioni extends React.Component {
+
+  render() {
+
+    return (
+      <tr className="error">
+        <td colSpan='4'>
+          <i className="fas fa-exclamation-triangle fa-4x my-3"></i><br/>
+          Purtroppo non ci sono risultati con questi filtri di ricerca
+        </td>
       </tr>
     );
   }
