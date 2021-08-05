@@ -275,10 +275,15 @@ class RigaSoluzioneTreno extends React.Component {
     let fermateTreno = App.singleton.controllerRicerca.getFermateTreno(treno);
 
     $('#titoloModal').html(treno.convoglio + " " + treno.treno);
-    let html = "<table className=\"table\"";
+    let html = "<table className=\"table\">";
     for (let i = 0; i < treno.fermate.length; i++) {
-      let classStyle = (fermateTreno.includes(treno.fermate[i].stazione)) ? "table-active" : "table-info";
-      html += "<tr className=" + classStyle + "><td>" + treno.fermate[i].orario + "</td><td>" + treno.fermate[i].stazione + "</td></tr>";
+      const esito = fermateTreno.includes(treno.fermate[i].stazione)
+      html += '<tr key="' + treno.fermate[i].stazione + '">';
+      html += (esito) ? '<td class="footer"><strong>' : '<td><small><em>';
+      html += treno.fermate[i].orario;
+      html += (esito) ? '</strong></td><td class="footer"><strong>' : '</em></small></td><td><small><em>';
+      html += (esito) ? treno.fermate[i].stazione.toUpperCase() : treno.fermate[i].stazione;
+      html += (esito) ? '</strong></td></tr>' : '</em></small></td></tr>';
     }
     $('#modalDettaglioBody').html(html + "</table>");
     $('#modalDettaglioTreno').modal('show');

@@ -2,6 +2,44 @@
     "treni": [
         {
             "convoglio": "InterCityNotte",
+            "treno": "1975",
+            "fermate": [
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "00:22"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "00:55"
+                },
+                {
+                    "stazione": "Villa S. Giovanni",
+                    "orario": "04:25"
+                },
+                {
+                    "stazione": "Messina Centrale",
+                    "orario": "06:10"
+                },
+                {
+                    "stazione": "Taormina-giardini",
+                    "orario": "07:29"
+                },
+                {
+                    "stazione": "Giarre-Riposto",
+                    "orario": "07:46"
+                },
+                {
+                    "stazione": "Acireale",
+                    "orario": "08:01"
+                },
+                {
+                    "stazione": "Catania Centrale",
+                    "orario": "08:17"
+                }
+            ]
+        },
+        {
+            "convoglio": "InterCityNotte",
             "treno": "771",
             "fermate": [
                 {
@@ -412,6 +450,32 @@
         },
         {
             "convoglio": "Frecciarossa 1000",
+            "treno": "9712",
+            "fermate": [
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "07:49"
+                },
+                {
+                    "stazione": "Verona Porta Nuova",
+                    "orario": "08:46"
+                },
+                {
+                    "stazione": "Milano Porta Garibaldi",
+                    "orario": "09:58"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "10:46"
+                },
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "10:58"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
             "treno": "9709",
             "fermate": [
                 {
@@ -483,6 +547,28 @@
                 {
                     "stazione": "Venezia S. Lucia",
                     "orario": "11:12"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
+            "treno": "35511",
+            "fermate": [
+                {
+                    "stazione": "Venezia S. Lucia",
+                    "orario": "09:26"
+                },
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "09:38"
+                },
+                {
+                    "stazione": "Padova",
+                    "orario": "09:56"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "10:59"
                 }
             ]
         },
@@ -587,6 +673,24 @@
                 {
                     "stazione": "Venezia S. Lucia",
                     "orario": "17:12"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
+            "treno": "9310",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "14:10"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "14:59"
+                },
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "15:10"
                 }
             ]
         },
@@ -715,7 +819,7 @@
                     "orario": "18:56"
                 },
                 {
-                    "stazione": "Bologna Centrale",
+                    "stazione": "Pisa Centrale",
                     "orario": "19:27"
                 },
                 {
