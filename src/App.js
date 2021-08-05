@@ -314,9 +314,9 @@ class RigaSoluzioneTreno extends React.Component {
           <span className="font-bold">{dati.orario_arrivo}</span>
         </td>
         <td>
-          <b>{dati.durata}</b>
-          {(treno.faster) ? <span><br/><small><i className="fas fa-meteor"></i> IL PIÙ VELOCE</small></span> : ""}
-          {(treno.noStop) ? <span><br/><small><i className="far fa-compass"></i> NO STOP</small></span> : ""}
+          <b>{dati.durata}</b><br/>
+          {(treno.faster) ? <span><small><i className="fas fa-meteor"></i> IL PIÙ VELOCE</small><br/></span> : ""}
+          {(treno.stops === 0) ? <span><small><i className="far fa-compass"></i> NO STOP</small></span> : <small>Fermate: {treno.stops}</small>}
         </td>
         <td>{treno.convoglio} <b>{treno.treno}</b> <i id={this.props.treno.treno} className="fas fa-info-circle" type="button" data-bs-toggle="modal" data-bs-target="#modalDettaglioTreno" onClick={this.handleClickDettagli.bind(this)}></i></td>
       </tr>
