@@ -19,7 +19,6 @@ class Utility {
 
 
     static getHourDiff(pStartHour, pEndHour) {
-        let res = '';
         let aTmp = '';
         // Trasformo l'orario di inizio in minuti
         aTmp = pStartHour.split(':');
@@ -39,11 +38,11 @@ class Utility {
         } else {
             nDiffMin = nDiff;
         }
-        res += this.displayDigit(nDiffHour);
-        res += 'h ';
-        res += this.displayDigit(nDiffMin);
-        res += 'm';
-        return res;
+        return {
+            h: nDiffHour,
+            min: nDiffMin,
+            minuti_totali: (nDiffHour * 60) + nDiffMin
+        };
     }
 
     static isAfter(fermata, ricerca) {
@@ -58,6 +57,12 @@ class Utility {
 
     static displayDigit(n) {
         return (n < 10) ? '0' + n : n;
+    }
+
+    static displayDurata(valori) {
+        let res = this.displayDigit(valori.h) + "h ";
+        res += this.displayDigit(valori.min) + "min";
+        return res;
     }
 
     static getListaStazioni() {
@@ -125,7 +130,33 @@ class Utility {
             let b1 = b.fermate[b.fermate.findFermateByName(partenza)].orario.split(":");
             return this.isAfter(a1, b1) ? 1 : -1;
         })
+
+        let faster = this.getFasterSolution(_soluzioni, partenza, arrivo);
+        for(let i = 0; i < _soluzioni.length; i++) {
+            if(faster.treni.includes(_soluzioni[i].treno)) {
+                _soluzioni[i].faster = true;
+            } else _soluzioni[i].faster = false;
+        }
+
         return _soluzioni;
+    }
+
+    static getFasterSolution(soluzioni, partenza, arrivo) {
+        let faster = {treni: [], durata: 0};
+        for(let i = 0; i < soluzioni.length; i++) {
+            let s = soluzioni[i];
+            let durataInMin = this.getHourDiff(s.fermate[s.fermate.findFermateByName(partenza)].orario, s.fermate[s.fermate.findFermateByName(arrivo)].orario).minuti_totali;
+            if(faster.treni.length == 0) {
+                faster.treni = [s.treno];
+                faster.durata = this.getHourDiff(s.fermate[s.fermate.findFermateByName(partenza)].orario, s.fermate[s.fermate.findFermateByName(arrivo)].orario).minuti_totali;
+            } else if(faster.treni.length > 0 && durataInMin == faster.durata) {
+                faster.treni.push(s.treno);
+            } else if(faster.treni.length > 0 && durataInMin < faster.durata) {
+                faster.treni = [s.treno];
+                faster.durata = durataInMin;
+            }
+        }
+        return faster;
     }
 
     static getPosFermata(treno, fermata) {

@@ -11,6 +11,8 @@ import ControllerRicerca from "./controllo/ControllerRicerca";
  *    + TabellaSoluzioni
  *        + RigaSoluzioneTreno
  *        + RigaZeroSoluzioni
+ *    + Contatori
+ *    + ModalDettagli
  */
 
 /** APP **/
@@ -24,6 +26,7 @@ class App extends React.Component {
     const _today = new Date();
     const _h = _today.getHours();
     this._stazioni = Utility.getListaStazioni();
+    this._rotabili = Utility.getListaRotabili();
     this.state = {
       treni: Utility.treni.treni,
       ricercaPartenza: 'Milano Centrale',
@@ -89,6 +92,9 @@ class App extends React.Component {
           ricercaArrivo={this.state.ricercaArrivo}
           ricercaOraInizio={this.state.ricercaOraInizio}
           ricercaConvoglio={this.state.ricercaConvoglio}
+        />
+        <Contatori 
+          soluzioni={this.state.treni.length}
         />
 
         <ModalDettagli />
@@ -177,7 +183,7 @@ class Ricerca extends React.Component {
     return (
       <div id="rigaRicerca">
         <form>
-          <div className="row">
+          <div className="row mb-3">
             <div className="col form-group">
               <label htmlFor="stazionePartenza">Da </label>
               <Select
@@ -251,7 +257,7 @@ class TabellaSoluzioni extends React.Component {
     }
 
     return (
-      <table>
+      <table className="shadow mb-2">
         <thead>
           <tr id="rigaIntestazione">
             <th>Partenza</th>
@@ -294,6 +300,8 @@ class RigaSoluzioneTreno extends React.Component {
 
     let dati = App.singleton.controllerRicerca.getDatiRigaTreno(treno);
 
+    let badge = "<span className=\"badge badge-secondary\"><small>IL PIÙ VELOCE</small></span>";
+
     return (
       <tr>
         <td>
@@ -307,7 +315,7 @@ class RigaSoluzioneTreno extends React.Component {
           <span className="font-bold">{dati.orario_arrivo}</span>
         </td>
         <td>
-          <b>{dati.durata}</b>
+          <b>{dati.durata}</b><br/> {(treno.faster) ? <small><i className="fas fa-meteor"></i> IL PIÙ VELOCE</small> : ""}
         </td>
         <td>{treno.convoglio} <b>{treno.treno}</b> <i id={this.props.treno.treno} className="fas fa-info-circle" type="button" data-bs-toggle="modal" data-bs-target="#modalDettaglioTreno" onClick={this.handleClickDettagli.bind(this)}></i></td>
       </tr>
@@ -349,7 +357,38 @@ class ModalDettagli extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
+  }
+}
+
+class Contatori extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+
+    let treni = Utility.treni.treni.length;
+    let stazioni = Utility.getListaStazioni().length;
+    let soluzioni = this.props.soluzioni;
+
+    return(
+      <div className="row pt-5" id="contatori">
+        <div className="col-4 my-4 py-4 border border-danger text-center text-danger rounded-pill shadow">
+          <p className="display-2">{treni}</p>
+          <p><b>Treni disponibili</b></p>
+        </div>
+        <div className="col-4 py-5 border border-danger text-center rounded-pill shadow">
+          <p className="display-1">{soluzioni}</p>
+          <p><b>Risultati trovati</b></p>
+        </div>
+        <div className="col-4 my-4 py-4 border border-danger text-center text-danger rounded-pill shadow">
+          <p className="display-2">{stazioni}</p>
+          <p><b>Stazioni disponibili</b></p>
+        </div>
+      </div>
+    );
   }
 
 }

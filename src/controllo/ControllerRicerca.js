@@ -53,7 +53,8 @@ class ControllerRicerca {
           result.orario_arrivo = treno.fermate[_posArrivo].orario;
         }
 
-        result.durata = Utility.getHourDiff(result.orario_partenza, result.orario_arrivo);
+        let durataObj = Utility.getHourDiff(result.orario_partenza, result.orario_arrivo);
+        result.durata = Utility.displayDurata(durataObj);
 
         return result;
     }
@@ -67,7 +68,6 @@ class ControllerRicerca {
             fermate.push(treno.fermate[i].stazione);
         }
         return fermate;
-
     }
 
 }
