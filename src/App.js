@@ -297,10 +297,9 @@ class RigaSoluzioneTreno extends React.Component {
 
   render() {
     const treno = this.props.treno;
+    console.log(treno);
 
     let dati = App.singleton.controllerRicerca.getDatiRigaTreno(treno);
-
-    let badge = "<span className=\"badge badge-secondary\"><small>IL PIÙ VELOCE</small></span>";
 
     return (
       <tr>
@@ -315,7 +314,9 @@ class RigaSoluzioneTreno extends React.Component {
           <span className="font-bold">{dati.orario_arrivo}</span>
         </td>
         <td>
-          <b>{dati.durata}</b><br/> {(treno.faster) ? <small><i className="fas fa-meteor"></i> IL PIÙ VELOCE</small> : ""}
+          <b>{dati.durata}</b>
+          {(treno.faster) ? <span><br/><small><i className="fas fa-meteor"></i> IL PIÙ VELOCE</small></span> : ""}
+          {(treno.noStop) ? <span><br/><small><i className="far fa-compass"></i> NO STOP</small></span> : ""}
         </td>
         <td>{treno.convoglio} <b>{treno.treno}</b> <i id={this.props.treno.treno} className="fas fa-info-circle" type="button" data-bs-toggle="modal" data-bs-target="#modalDettaglioTreno" onClick={this.handleClickDettagli.bind(this)}></i></td>
       </tr>

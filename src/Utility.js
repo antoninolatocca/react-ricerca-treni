@@ -136,6 +136,10 @@ class Utility {
             if(faster.treni.includes(_soluzioni[i].treno)) {
                 _soluzioni[i].faster = true;
             } else _soluzioni[i].faster = false;
+            
+            let stops = _soluzioni[i].fermate.findFermateByName(arrivo) - _soluzioni[i].fermate.findFermateByName(partenza);
+            console.log(stops);
+            _soluzioni[i].noStop = (stops === 1) ? true : false;
         }
 
         return _soluzioni;
