@@ -707,7 +707,7 @@
                     "orario": "18:20"
                 },
                 {
-                    "stazione": "Milano Centrale",
+                    "stazione": "Bologna Centrale",
                     "orario": "18:10"
                 },
                 {
@@ -819,6 +819,64 @@
                 {
                     "stazione": "Monfalcone",
                     "orario": "23:15"
+                }
+            ]
+        },
+        {
+            "convoglio": "InterCityNotte",
+            "treno": "1976",
+            "fermate": [
+                {
+                    "stazione": "Siracusa",
+                    "orario": "19:10"
+                },
+                {
+                    "stazione": "Augusta",
+                    "orario": "19:32"
+                },
+                {
+                    "stazione": "Lentini",
+                    "orario": "19:53"
+                },
+                {
+                    "stazione": "Catania Centrale",
+                    "orario": "20:26"
+                },
+                {
+                    "stazione": "Acireale",
+                    "orario": "20:39"
+                },
+                {
+                    "stazione": "Giarre Riposto",
+                    "orario": "20:51"
+                },
+                {
+                    "stazione": "Taormina",
+                    "orario": "21:12"
+                },
+                {
+                    "stazione": "Messina Centrale",
+                    "orario": "22:10"
+                },
+                {
+                    "stazione": "Villa San Giovanni",
+                    "orario": "00:05"
+                },
+                {
+                    "stazione": "Lamezia Terme Centrale",
+                    "orario": "01:06"
+                },
+                {
+                    "stazione": "Formia",
+                    "orario": "05:51"
+                },
+                {
+                    "stazione": "Latina",
+                    "orario": "06:32"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "07:18"
                 }
             ]
         },
@@ -943,6 +1001,136 @@
                 {
                     "stazione": "Torino Porta Nuova",
                     "orario": "09:11"
+                }
+            ]
+        },
+        {
+            "convoglio": "InterCityNotte",
+            "treno": "794",
+            "fermate": [
+                {
+                    "stazione": "Reggio Calabria Centrale",
+                    "orario": "21:42"
+                },
+                {
+                    "stazione": "Reggio Calabria Lido",
+                    "orario": "21:48"
+                },
+                {
+                    "stazione": "Villa San Giovanni",
+                    "orario": "22:03"
+                },
+                {
+                    "stazione": "Scilla",
+                    "orario": "21:12"
+                },
+                {
+                    "stazione": "Bagnara",
+                    "orario": "22:21"
+                },
+                {
+                    "stazione": "Palmi",
+                    "orario": "22:29"
+                },
+                {
+                    "stazione": "Gioia Tauro",
+                    "orario": "22:37"
+                },
+                {
+                    "stazione": "Rosarno",
+                    "orario": "22:47"
+                },
+                {
+                    "stazione": "Nicotera",
+                    "orario": "23:04"
+                },
+                {
+                    "stazione": "Ricadi",
+                    "orario": "23:18"
+                },
+                {
+                    "stazione": "Tropea",
+                    "orario": "23:27"
+                },
+                {
+                    "stazione": "Vibo Marina",
+                    "orario": "23:47"
+                },
+                {
+                    "stazione": "Lamezia Terme Centrale",
+                    "orario": "00:12"
+                },
+                {
+                    "stazione": "Amantea",
+                    "orario": "00:32"
+                },
+                {
+                    "stazione": "Paola",
+                    "orario": "00:52"
+                },
+                {
+                    "stazione": "Scalea S. Domenica Talao",
+                    "orario": "01:27"
+                },
+                {
+                    "stazione": "Sapri",
+                    "orario": "01:53"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "03:10"
+                },
+                {
+                    "stazione": "Formia",
+                    "orario": "04:54"
+                },
+                {
+                    "stazione": "Latina",
+                    "orario": "05:30"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "06:09"
+                },
+                {
+                    "stazione": "Firenze Campo Marte",
+                    "orario": "10:07"
+                },
+                {
+                    "stazione": "Pisa Centrale",
+                    "orario": "11:27"
+                },
+                {
+                    "stazione": "La Spezia Centrale",
+                    "orario": "12:45"
+                },
+                {
+                    "stazione": "Genova Brignole",
+                    "orario": "14:48"
+                },
+                {
+                    "stazione": "Genova Piazza Principe",
+                    "orario": "14:57"
+                },
+                {
+                    "stazione": "Milano Porta Garibaldi",
+                    "orario": "16:50"
+                },
+                {
+                    "stazione": "Novara",
+                    "orario": "17:24"
+                },
+                {
+                    "stazione": "Vercelli",
+                    "orario": "17:37"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "18:18"
+                },
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "18:27"
                 }
             ]
         },

@@ -31,7 +31,7 @@ class App extends React.Component {
       ricercaOraInizio: _h,
       ricercaConvoglio: "Frecciarossa 1000"
     };
-    // this.state.treni = Utility.ricercaTreni(this.state.ricercaPartenza, this.state.ricercaArrivo, this.state.ricercaOraInizio, this.state.ricercaConvoglio);
+    this.state.treni = Utility.ricercaTreni(this.state.ricercaPartenza, this.state.ricercaArrivo, this.state.ricercaOraInizio, this.state.ricercaConvoglio);
 
     this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(
       this
@@ -303,7 +303,7 @@ class RigaSoluzioneTreno extends React.Component {
         <td>
           <b>{dati.durata}</b>
         </td>
-        <td>{treno.convoglio} <b>{treno.treno}</b> <i id={this.props.treno.treno} className="fas fa-info-circle" type="button" data-toggle="modal" data-target="#modalDettaglioTreno" onClick={this.handleClickDettagli.bind(this)}></i></td>
+        <td>{treno.convoglio} <b>{treno.treno}</b> <i id={this.props.treno.treno} className="fas fa-info-circle" type="button" data-bs-toggle="modal" data-bs-target="#modalDettaglioTreno" onClick={this.handleClickDettagli.bind(this)}></i></td>
       </tr>
     );
   }
@@ -334,7 +334,7 @@ class ModalDettagli extends React.Component {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="titoloModal">Dettagli treno</h5>
-              <button type="button" className="btn btn-light" data-dismiss="modal" aria-label="Close">
+              <button type="button" className="btn btn-light" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true"><i className="fas fa-times"></i></span>
               </button>
             </div>

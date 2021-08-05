@@ -120,6 +120,11 @@ class Utility {
             })
             _soluzioni = sol_convoglio;
         }
+        _soluzioni.sort((a, b) => {
+            let a1 = a.fermate[a.fermate.findFermateByName(partenza)].orario.split(":");
+            let b1 = b.fermate[b.fermate.findFermateByName(partenza)].orario.split(":");
+            return this.isAfter(a1, b1) ? 1 : -1;
+        })
         return _soluzioni;
     }
 
