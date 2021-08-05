@@ -31,6 +31,7 @@ class App extends React.Component {
       ricercaOraInizio: _h,
       ricercaConvoglio: "Frecciarossa 1000"
     };
+    // ON/OFF 
     this.state.treni = Utility.ricercaTreni(this.state.ricercaPartenza, this.state.ricercaArrivo, this.state.ricercaOraInizio, this.state.ricercaConvoglio);
 
     this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(
