@@ -55,6 +55,7 @@ class ControllerRicerca {
 
         let durataObj = Utility.getHourDiff(result.orario_partenza, result.orario_arrivo);
         result.durata = Utility.displayDurata(durataObj);
+        result.giorno_successivo = durataObj.giorno_successivo;
 
         return result;
     }

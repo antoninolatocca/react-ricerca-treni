@@ -311,7 +311,7 @@ class RigaSoluzioneTreno extends React.Component {
         <td>
           {dati.stazione_arrivo}
           <br />
-          <span className="font-bold">{dati.orario_arrivo}</span>
+          <span><span  className="font-bold">{dati.orario_arrivo}</span> {(dati.giorno_successivo) ? <sup><small><i class="fas fa-asterisk"></i></small></sup> : ""}</span>
         </td>
         <td>
           <b>{dati.durata}</b><br/>

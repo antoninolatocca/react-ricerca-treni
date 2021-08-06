@@ -19,29 +19,35 @@ class Utility {
 
 
     static getHourDiff(pStartHour, pEndHour) {
-        let aTmp = '';
-        // Trasformo l'orario di inizio in minuti
-        aTmp = pStartHour.split(':');
-        let nStartMin = Number(aTmp[0]) * 60 + Number(aTmp[1]);
-        // Trasformo l'orario di fine in minuti
-        aTmp = pEndHour.split(':');
-        let nEndMin = Number(aTmp[0]) * 60 + Number(aTmp[1]);
-        // Calcolo la differenza
-        let nDiff = 0;
-        nDiff = (nStartMin > nEndMin) ? (nStartMin - nEndMin) : (nEndMin - nStartMin);
-        // Formatto la stringa di uscita
-        let nDiffMin = 0;
-        let nDiffHour = 0;
-        if (nDiff > 59) {
-            nDiffMin = nDiff % 60;
-            nDiffHour = (nDiff - nDiffMin) / 60;
+        let start_array = [0, 0];
+        let end_array = [0, 0];
+        start_array = pStartHour.split(":");
+        end_array = pEndHour.split(":");
+
+        start_array = [parseInt(start_array[0]), parseInt(start_array[1])];
+        end_array = [parseInt(end_array[0]), parseInt(end_array[1])];
+
+        let start_minutes = (start_array[0] * 60) + start_array[1];
+        let end_minutes = (end_array[0] * 60) + end_array[1];
+
+        let diff_minutes = 0;
+        let next_day = false;
+        if(start_array[0] <= end_array[0]) {
+            diff_minutes = end_minutes - start_minutes;
         } else {
-            nDiffMin = nDiff;
+            next_day = true;
+            let yesterday = ((23 - start_array[0]) * 60) + (60 - start_array[1]);
+            diff_minutes = yesterday + end_minutes;
         }
+
+        let res_h = Math.floor(diff_minutes / 60);
+        let res_m = diff_minutes - (res_h * 60);
+
         return {
-            h: nDiffHour,
-            min: nDiffMin,
-            minuti_totali: (nDiffHour * 60) + nDiffMin
+            h: res_h,
+            min: res_m,
+            minuti_totali: diff_minutes,
+            giorno_successivo: next_day
         };
     }
 
