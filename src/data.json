@@ -1,7 +1,7 @@
 {
     "treni": [
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "1975",
             "fermate": [
                 {
@@ -39,7 +39,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "771",
             "fermate": [
                 {
@@ -409,6 +409,52 @@
             ]
         },
         {
+            "convoglio": "Eurocity",
+            "treno": "50",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "07:23"
+                },
+                {
+                    "stazione": "Gallarate",
+                    "orario": "07:57"
+                },
+                {
+                    "stazione": "Domodossola",
+                    "orario": "08:48"
+                },
+                {
+                    "stazione": "Brig",
+                    "orario": "09:20"
+                },
+                {
+                    "stazione": "Visp",
+                    "orario": "09:28"
+                },
+                {
+                    "stazione": "Spiez",
+                    "orario": "09:54"
+                },
+                {
+                    "stazione": "Thun",
+                    "orario": "10:04"
+                },
+                {
+                    "stazione": "Bern",
+                    "orario": "10:36"
+                },
+                {
+                    "stazione": "Olten",
+                    "orario": "11:05"
+                },
+                {
+                    "stazione": "Brasel SBB",
+                    "orario": "11:29"
+                }
+            ]
+        },
+        {
             "convoglio": "Frecciarossa 1000",
             "treno": "9609",
             "fermate": [
@@ -533,6 +579,52 @@
             ]
         },
         {
+            "convoglio": "Frecciargento",
+            "treno": "8305",
+            "fermate": [
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "08:05"
+                },
+                {
+                    "stazione": "Caserta",
+                    "orario": "09:15"
+                },
+                {
+                    "stazione": "Benevento",
+                    "orario": "09:51"
+                },
+                {
+                    "stazione": "Foggia",
+                    "orario": "11:05"
+                },
+                {
+                    "stazione": "Barletta",
+                    "orario": "11:36"
+                },
+                {
+                    "stazione": "Bari Centrale",
+                    "orario": "12:08"
+                },
+                {
+                    "stazione": "Monopoli",
+                    "orario": "12:30"
+                },
+                {
+                    "stazione": "Ostuni",
+                    "orario": "12:49"
+                },
+                {
+                    "stazione": "Brindisi",
+                    "orario": "13:11"
+                },
+                {
+                    "stazione": "Lecce",
+                    "orario": "13:36"
+                }
+            ]
+        },
+        {
             "convoglio": "Frecciarossa 1000",
             "treno": "9709",
             "fermate": [
@@ -563,6 +655,102 @@
                 {
                     "stazione": "Venezia S. Lucia",
                     "orario": "10:42"
+                }
+            ]
+        },
+        {
+            "convoglio": "Eurocity",
+            "treno": "32",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "08:20"
+                },
+                {
+                    "stazione": "Stresa",
+                    "orario": "09:20"
+                },
+                {
+                    "stazione": "Domodossola",
+                    "orario": "09:48"
+                },
+                {
+                    "stazione": "Brig",
+                    "orario": "10:16"
+                },
+                {
+                    "stazione": "Sion",
+                    "orario": "10:47"
+                },
+                {
+                    "stazione": "Montreux",
+                    "orario": "11:23"
+                },
+                {
+                    "stazione": "Lausanne",
+                    "orario": "11:45"
+                },
+                {
+                    "stazione": "Geneve",
+                    "orario": "12:21"
+                }
+            ]
+        },
+        {
+            "convoglio": "Eurocity",
+            "treno": "307",
+            "fermate": [
+                {
+                    "stazione": "Zurich HB",
+                    "orario": "08:33"
+                },
+                {
+                    "stazione": "Zug",
+                    "orario": "09:00"
+                },
+                {
+                    "stazione": "Arth Goldau",
+                    "orario": "09:19"
+                },
+                {
+                    "stazione": "Bellinzona",
+                    "orario": "10:16"
+                },
+                {
+                    "stazione": "Lugano",
+                    "orario": "10:33"
+                },
+                {
+                    "stazione": "Chiasso",
+                    "orario": "11:02"
+                },
+                {
+                    "stazione": "Como S. Giovanni",
+                    "orario": "11:10"
+                },
+                {
+                    "stazione": "Monza",
+                    "orario": "11:53"
+                },
+                {
+                    "stazione": "Milano Lambrate",
+                    "orario": "12:11"
+                },
+                {
+                    "stazione": "Milano Rogoredo",
+                    "orario": "12:21"
+                },
+                {
+                    "stazione": "Pavia",
+                    "orario": "12:41"
+                },
+                {
+                    "stazione": "Tortona",
+                    "orario": "13:05"
+                },
+                {
+                    "stazione": "Genova Piazza Principe",
+                    "orario": "13:49"
                 }
             ]
         },
@@ -631,6 +819,76 @@
             ]
         },
         {
+            "convoglio": "Eurocity",
+            "treno": "52",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "11:20"
+                },
+                {
+                    "stazione": "Stresa",
+                    "orario": "12:20"
+                },
+                {
+                    "stazione": "Domodossola",
+                    "orario": "12:48"
+                },
+                {
+                    "stazione": "Brig",
+                    "orario": "13:18"
+                },
+                {
+                    "stazione": "Visp",
+                    "orario": "13:27"
+                },
+                {
+                    "stazione": "Spiez",
+                    "orario": "13:54"
+                },
+                {
+                    "stazione": "Thun",
+                    "orario": "14:04"
+                },
+                {
+                    "stazione": "Bern",
+                    "orario": "14:36"
+                },
+                {
+                    "stazione": "Olten",
+                    "orario": "15:05"
+                },
+                {
+                    "stazione": "Basel SBB",
+                    "orario": "15:38"
+                },
+                {
+                    "stazione": "Basel Bad BF",
+                    "orario": "15:52"
+                },
+                {
+                    "stazione": "Freiburg (BRSG) HB",
+                    "orario": "16:22"
+                },
+                {
+                    "stazione": "Ringsheim",
+                    "orario": "16:42"
+                },
+                {
+                    "stazione": "Karlsrhuhe HBF",
+                    "orario": "17:29"
+                },
+                {
+                    "stazione": "Mannheim HBF",
+                    "orario": "18:88"
+                },
+                {
+                    "stazione": "Frankfurt Am Main HBF",
+                    "orario": "18:44"
+                }
+            ]
+        },
+        {
             "convoglio": "Frecciarossa 1000",
             "treno": "8508",
             "fermate": [
@@ -649,7 +907,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "795",
             "fermate": [
                 {
@@ -675,7 +933,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "1982",
             "fermate": [
                 {
@@ -969,6 +1227,48 @@
             ]
         },
         {
+            "convoglio": "Frecciargento",
+            "treno": "8315",
+            "fermate": [
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "15:10"
+                },
+                {
+                    "stazione": "Caserta",
+                    "orario": "16:23"
+                },
+                {
+                    "stazione": "Benevento",
+                    "orario": "17:04"
+                },
+                {
+                    "stazione": "Foggia",
+                    "orario": "18:08"
+                },
+                {
+                    "stazione": "Barletta",
+                    "orario": "18:36"
+                },
+                {
+                    "stazione": "Bari Centrale",
+                    "orario": "19:13"
+                },
+                {
+                    "stazione": "Monopoli",
+                    "orario": "19:38"
+                },
+                {
+                    "stazione": "Brindisi",
+                    "orario": "20:14"
+                },
+                {
+                    "stazione": "Lecce",
+                    "orario": "20:35"
+                }
+            ]
+        },
+        {
             "convoglio": "Frecciarossa 1000",
             "treno": "35527",
             "fermate": [
@@ -1047,6 +1347,44 @@
                 {
                     "stazione": "Roma Termini",
                     "orario": "21:10"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciargento",
+            "treno": "8323",
+            "fermate": [
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "18:05"
+                },
+                {
+                    "stazione": "Caserta",
+                    "orario": "19:15"
+                },
+                {
+                    "stazione": "Benevento",
+                    "orario": "19:53"
+                },
+                {
+                    "stazione": "Foggia",
+                    "orario": "21:00"
+                },
+                {
+                    "stazione": "Barletta",
+                    "orario": "21:31"
+                },
+                {
+                    "stazione": "Bari Centrale",
+                    "orario": "22:06"
+                },
+                {
+                    "stazione": "Brindisi",
+                    "orario": "23:00"
+                },
+                {
+                    "stazione": "Lecce",
+                    "orario": "23:23"
                 }
             ]
         },
@@ -1165,7 +1503,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "1976",
             "fermate": [
                 {
@@ -1249,7 +1587,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "35706",
             "fermate": [
                 {
@@ -1331,7 +1669,89 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
+            "treno": "757",
+            "fermate": [
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "20:20"
+                },
+                {
+                    "stazione": "Torino Lingotto",
+                    "orario": "20:29"
+                },
+                {
+                    "stazione": "Asti",
+                    "orario": "21:01"
+                },
+                {
+                    "stazione": "Alessandria",
+                    "orario": "21:22"
+                },
+                {
+                    "stazione": "Tortona",
+                    "orario": "21:39"
+                },
+                {
+                    "stazione": "Voghera",
+                    "orario": "21:53"
+                },
+                {
+                    "stazione": "Piacenza",
+                    "orario": "22:30"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "23:52"
+                },
+                {
+                    "stazione": "Rimini",
+                    "orario": "00:50"
+                },
+                {
+                    "stazione": "Ancona",
+                    "orario": "01:57"
+                },
+                {
+                    "stazione": "Pescara",
+                    "orario": "03:35"
+                },
+                {
+                    "stazione": "Foggia",
+                    "orario": "05:32"
+                },
+                {
+                    "stazione": "Barletta",
+                    "orario": "06:12"
+                },
+                {
+                    "stazione": "Bari Centrale",
+                    "orario": "06:57"
+                },
+                {
+                    "stazione": "Monopoli",
+                    "orario": "07:28"
+                },
+                {
+                    "stazione": "Fasano",
+                    "orario": "07:40"
+                },
+                {
+                    "stazione": "Ostuni",
+                    "orario": "07:54"
+                },
+                {
+                    "stazione": "Brindisi",
+                    "orario": "08:20"
+                },
+                {
+                    "stazione": "Lecce",
+                    "orario": "08:50"
+                }
+            ]
+        },
+        {
+            "convoglio": "IntercityNotte",
             "treno": "754",
             "fermate": [
                 {
@@ -1429,7 +1849,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "796",
             "fermate": [
                 {
@@ -1511,7 +1931,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "35591",
             "fermate": [
                 {
@@ -1565,7 +1985,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "794",
             "fermate": [
                 {
@@ -1695,7 +2115,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "1979",
             "fermate": [
                 {
@@ -1733,7 +2153,7 @@
             ]
         },
         {
-            "convoglio": "InterCityNotte",
+            "convoglio": "IntercityNotte",
             "treno": "799",
             "fermate": [
                 {

@@ -145,7 +145,7 @@ class Utility {
             
             _soluzioni[i].stops = _soluzioni[i].fermate.findFermateByName(arrivo) - _soluzioni[i].fermate.findFermateByName(partenza) -1;
         }
-
+        
         return _soluzioni;
     }
 

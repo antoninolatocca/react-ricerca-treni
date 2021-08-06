@@ -64,14 +64,14 @@ class App extends React.Component {
   handleRicercaOraInizioChange(inizio) {
     this.setState({
       ricercaOraInizio: inizio,
-      treni: Utility.ricercaTreni(this.state.ricercaPartenza, this.ricercaArrivo, inizio, this.state.ricercaConvoglio)
+      treni: Utility.ricercaTreni(this.state.ricercaPartenza, this.state.ricercaArrivo, inizio, this.state.ricercaConvoglio)
     });
   }
 
   handleRicercaConvoglioChange(convoglio) {
     this.setState({
       ricercaConvoglio: convoglio,
-      treni: Utility.ricercaTreni(this.state.ricercaPartenza, this.ricercaArrivo, this.state.ricercaOraInizio, convoglio)
+      treni: Utility.ricercaTreni(this.state.ricercaPartenza, this.state.ricercaArrivo, this.state.ricercaOraInizio, convoglio)
     });
   }
 
@@ -297,7 +297,6 @@ class RigaSoluzioneTreno extends React.Component {
 
   render() {
     const treno = this.props.treno;
-    console.log(treno);
 
     let dati = App.singleton.controllerRicerca.getDatiRigaTreno(treno);
 
