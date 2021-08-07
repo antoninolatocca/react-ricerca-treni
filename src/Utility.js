@@ -1,3 +1,5 @@
+import Costanti from './Costanti';
+
 const FRECCE = require('./data.json');
 
 Array.prototype.findFermateByName = function(stazione){
@@ -91,7 +93,7 @@ class Utility {
         return rotabili;
     }
 
-    static ricercaTreni(partenza, arrivo, orario, convoglio) {
+    static ricercaTreni(partenza, arrivo, orario, convoglio, orderBy) {
         let _soluzioni = [];
         FRECCE.treni.forEach(treno => {
             treno.fermate.forEach(fermata => {
@@ -124,7 +126,7 @@ class Utility {
             });
             _soluzioni = sol_arrivo;
         }
-        if(convoglio != "all" && _soluzioni.length > 0){
+        if(convoglio != Costanti.ALL && _soluzioni.length > 0){
             let sol_convoglio = [];
             _soluzioni.forEach(treno => {
                 if(treno.convoglio == convoglio) sol_convoglio.push(treno);

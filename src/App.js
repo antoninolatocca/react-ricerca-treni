@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import Utility from './Utility';
+import Costanti from './Costanti';
 
 import './style.css';
 import ControllerRicerca from "./controllo/ControllerRicerca";
@@ -36,43 +37,10 @@ class App extends React.Component {
       ricercaOraInizio: datiIniziali.orario,
       ricercaConvoglio: datiIniziali.convoglio
     };
-
-    this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(
-      this
-    );
-
-    this.handleRicercaOraInizioChange = this.handleRicercaOraInizioChange.bind(
-      this
-    );
-
-    this.handleSelectConvoglioChange = this.handleRicercaConvoglioChange.bind(
-      this
-    );
   }
 
   get controllerRicerca(){
     return this._controllerRicerca;
-  }
-
-  handleRicercaArrivoChange(arrivo) {
-    this.setState({
-      ricercaArrivo: arrivo,
-      treni: Utility.ricercaTreni(this.state.ricercaPartenza, arrivo, this.state.ricercaOraInizio, this.state.ricercaConvoglio)
-    });
-  }
-
-  handleRicercaOraInizioChange(inizio) {
-    this.setState({
-      ricercaOraInizio: inizio,
-      treni: Utility.ricercaTreni(this.state.ricercaPartenza, this.state.ricercaArrivo, inizio, this.state.ricercaConvoglio)
-    });
-  }
-
-  handleRicercaConvoglioChange(convoglio) {
-    this.setState({
-      ricercaConvoglio: convoglio,
-      treni: Utility.ricercaTreni(this.state.ricercaPartenza, this.state.ricercaArrivo, this.state.ricercaOraInizio, convoglio)
-    });
   }
 
   render() {
@@ -126,7 +94,7 @@ class Ricerca extends React.Component {
       this._stazioni.push({value: item, label: item});
     };
 
-    this._convogli = [{value: "all", label: "Tutti i treni"}];
+    this._convogli = [{value: Costanti.ALL, label: "Tutti i treni"}];
     for(let item of this._jsonConvogli.values()) {
       this._convogli.push({value: item, label: item});
     };
@@ -185,27 +153,27 @@ class Ricerca extends React.Component {
         <form>
           <div className="row mb-3">
             <div className="col form-group">
-              <label htmlFor="stazionePartenza">Da </label>
+              <label htmlFor="stazionePartenza">{Costanti.DA} </label>
               <Select
                 id="stazionePartenza"
                 value={this.state.ricercaPartenza}
                 options={this._stazioni}
-                placeholder={(this.state.stazione_partenza) ? this.state.stazione_partenza : "Stazione di partenza"}
+                placeholder={(this.state.stazione_partenza) ? this.state.stazione_partenza : Costanti.STAZIONE_DI_PARTENZA}
                 onChange={this.handleRicercaPartenzaChange.bind(this)}
               />
             </div>
             <div className="col form-group">
-              <label htmlFor="stazioneArrivo">A </label>
+              <label htmlFor="stazioneArrivo">{Costanti.A} </label>
               <Select
                 id="stazioneArrivo"
                 value={this.state.ricercaArrivo}
                 options={this._stazioni}
-                placeholder={(this.state.stazione_arrivo) ? this.state.stazione_arrivo : "Stazione di arrivo"}
+                placeholder={(this.state.stazione_arrivo) ? this.state.stazione_arrivo : Costanti.STAZIONE_DI_ARRIVO}
                 onChange={this.handleRicercaArrivoChange.bind(this)}
               />
             </div>
             <div className="col form-group">
-              <label htmlFor="dalleOre">Ore </label>
+              <label htmlFor="dalleOre">{Costanti.ORE} </label>
               <Select
                 id="dalleOre"
                 value={this.state.start}
@@ -215,12 +183,12 @@ class Ricerca extends React.Component {
               />
             </div>
             <div className="col form-group">
-              <label htmlFor="convogli">Treno </label>
+              <label htmlFor="convogli">{Costanti.TRENO} </label>
               <Select
                 id="convogli"
                 value={this.state.convoglio}
                 options={this._convogli}
-                placeholder={(this.state.convoglio == "all") ? "Tutti i treni" : this.state.convoglio}
+                placeholder={(this.state.convoglio == Costanti.ALL) ? Costanti.TUTTI_I_TRENI : this.state.convoglio}
                 onChange={this.handleRicercaConvoglioChange.bind(this)}
               />
             </div>
@@ -260,10 +228,10 @@ class TabellaSoluzioni extends React.Component {
       <table className="shadow mb-2">
         <thead>
           <tr id="rigaIntestazione">
-            <th>Partenza</th>
-            <th>Arrivo</th>
-            <th>Durata</th>
-            <th>Treno</th>
+            <th>{Costanti.PARTENZA}</th>
+            <th>{Costanti.ARRIVO}</th>
+            <th>{Costanti.DURATA}</th>
+            <th>{Costanti.TRENO}</th>
           </tr>
         </thead>
         <tbody className="hover-red">{righe}</tbody>

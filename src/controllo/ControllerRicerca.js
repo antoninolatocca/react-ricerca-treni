@@ -1,5 +1,6 @@
 import Utility from "../Utility";
 import App from "../App";
+import Costanti from "../Costanti";
 
 class ControllerRicerca {
 
@@ -10,29 +11,31 @@ class ControllerRicerca {
         this._partenza = "Milano Centrale";
         this._arrivo = "Roma Termini";
         this._orario = _h;
-        this._convoglio = "all";
+        this._convoglio = Costanti.ALL;
 
         this._avviaRicerca = true;
+
+        this._orderBy = Costanti.PARTENZA;
     }
 
     handleSelectPartenzaChange(value) {
         this._partenza = value;
-        App.singleton.setState({treni:Utility.ricercaTreni(value, this._arrivo, this._orario, this._convoglio)});
+        App.singleton.setState({treni:Utility.ricercaTreni(value, this._arrivo, this._orario, this._convoglio, this._orderBy)});
     }
 
     handleSelectArrivoChange(value) {
         this._arrivo = value;
-        App.singleton.setState({treni:Utility.ricercaTreni(this._partenza, value, this._orario, this._convoglio)})
+        App.singleton.setState({treni:Utility.ricercaTreni(this._partenza, value, this._orario, this._convoglio, this._orderBy)})
     }
 
     handleSelectOraInizioChange(value) {
-        this._oraInizio = value;
-        App.singleton.setState({treni:Utility.ricercaTreni(this._partenza, this._arrivo, value, this._convoglio)});
+        this._orario = value;
+        App.singleton.setState({treni:Utility.ricercaTreni(this._partenza, this._arrivo, value, this._convoglio, this._orderBy)});
     }
 
     handleSelectConvoglioChange(value) {
         this._convoglio = value;
-        App.singleton.setState({treni:Utility.ricercaTreni(this._partenza, this._arrivo, this._orario, value)})
+        App.singleton.setState({treni:Utility.ricercaTreni(this._partenza, this._arrivo, this._orario, value, this._orderBy)})
     }
 
     getDatiRigaTreno(treno) {
@@ -76,7 +79,7 @@ class ControllerRicerca {
     getDatiIniziali() {
         let treni;
         if(this._avviaRicerca) {
-            treni = Utility.ricercaTreni(this._partenza, this._arrivo, this._orario, this._convoglio);
+            treni = Utility.ricercaTreni(this._partenza, this._arrivo, this._orario, this._convoglio, this._orderBy);
         } else {
             treni = Utility.treni.treni;
         }

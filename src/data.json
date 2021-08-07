@@ -580,6 +580,76 @@
         },
         {
             "convoglio": "Frecciargento",
+            "treno": "8887",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "08:05"
+                },
+                {
+                    "stazione": "Parma",
+                    "orario": "08:54"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "09:08"
+                },
+                {
+                    "stazione": "Modena",
+                    "orario": "09:21"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "09:45"
+                },
+                {
+                    "stazione": "Rimini",
+                    "orario": "10:40"
+                },
+                {
+                    "stazione": "Riccione",
+                    "orario": "10:47"
+                },
+                {
+                    "stazione": "Pesaro",
+                    "orario": "11:02"
+                },
+                {
+                    "stazione": "Ancona",
+                    "orario": "11:34"
+                },
+                {
+                    "stazione": "Civitanova Marche",
+                    "orario": "11:57"
+                },
+                {
+                    "stazione": "Pescara",
+                    "orario": "12:47"
+                },
+                {
+                    "stazione": "Vasto S. Salvo",
+                    "orario": "13:24"
+                },
+                {
+                    "stazione": "Termoli",
+                    "orario": "13:39"
+                },
+                {
+                    "stazione": "Foggia",
+                    "orario": "14:22"
+                },
+                {
+                    "stazione": "Barletta",
+                    "orario": "14:53"
+                },
+                {
+                    "stazione": "Bari Centrale",
+                    "orario": "15:30"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciargento",
             "treno": "8305",
             "fermate": [
                 {
@@ -797,6 +867,48 @@
             ]
         },
         {
+            "convoglio": "Frecciargento",
+            "treno": "8333",
+            "fermate": [
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "08:58"
+                },
+                {
+                    "stazione": "Napoli Afragola",
+                    "orario": "10:01"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "10:31"
+                },
+                {
+                    "stazione": "Maratea",
+                    "orario": "11:41"
+                },
+                {
+                    "stazione": "Paola",
+                    "orario": "12:22"
+                },
+                {
+                    "stazione": "Lamezia Terme Centrale",
+                    "orario": "12:55"
+                },
+                {
+                    "stazione": "Rosarno",
+                    "orario": "13:23"
+                },
+                {
+                    "stazione": "Villa S. Giovanni",
+                    "orario": "13:53"
+                },
+                {
+                    "stazione": "Reggio Calabria Centrale",
+                    "orario": "14:06"
+                }
+            ]
+        },
+        {
             "convoglio": "Frecciarossa 1000",
             "treno": "35511",
             "fermate": [
@@ -815,6 +927,84 @@
                 {
                     "stazione": "Bologna Centrale",
                     "orario": "10:59"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciargento",
+            "treno": "8885",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "13:05"
+                },
+                {
+                    "stazione": "Parma",
+                    "orario": "11:54"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "12:08"
+                },
+                {
+                    "stazione": "Modena",
+                    "orario": "12:21"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "12:45"
+                },
+                {
+                    "stazione": "Cesena",
+                    "orario": "13:24"
+                },
+                {
+                    "stazione": "Rimini",
+                    "orario": "13:43"
+                },
+                {
+                    "stazione": "Cattolica S. Giovanni Gabicce",
+                    "orario": "13:53"
+                },
+                {
+                    "stazione": "Pesaro",
+                    "orario": "14:05"
+                },
+                {
+                    "stazione": "Ancona",
+                    "orario": "14:37"
+                },
+                {
+                    "stazione": "S. Benedetto del Tronto",
+                    "orario": "15:16"
+                },
+                {
+                    "stazione": "Pescara",
+                    "orario": "15:50"
+                },
+                {
+                    "stazione": "Termoli",
+                    "orario": "16:39"
+                },
+                {
+                    "stazione": "Foggia",
+                    "orario": "17:24"
+                },
+                {
+                    "stazione": "Barletta",
+                    "orario": "17:53"
+                },
+                {
+                    "stazione": "Bari Centrale",
+                    "orario": "18:40"
+                },
+                {
+                    "stazione": "Gioia del Colle",
+                    "orario": "19:12"
+                },
+                {
+                    "stazione": "Taranto",
+                    "orario": "19:46"
                 }
             ]
         },
@@ -1499,6 +1689,52 @@
                 {
                     "stazione": "Monfalcone",
                     "orario": "23:15"
+                }
+            ]
+        },
+        {
+            "convoglio": "IntercityNotte",
+            "treno": "1954",
+            "fermate": [
+                {
+                    "stazione": "Palermo Centrale",
+                    "orario": "18:48"
+                },
+                {
+                    "stazione": "Termini Imerese",
+                    "orario": "19:17"
+                },
+                {
+                    "stazione": "Cefalù",
+                    "orario": "19:36"
+                },
+                {
+                    "stazione": "Santo Stefano di Camastra",
+                    "orario": "20:00"
+                },
+                {
+                    "stazione": "S. Agata Militello",
+                    "orario": "20:21"
+                },
+                {
+                    "stazione": "Capo D'Orlando-Naso",
+                    "orario": "18:36"
+                },
+                {
+                    "stazione": "Patti-San Piero Patti",
+                    "orario": "21:03"
+                },
+                {
+                    "stazione": "Barcellona",
+                    "orario": "21:18"
+                },
+                {
+                    "stazione": "Milazzo",
+                    "orario": "21:25"
+                },
+                {
+                    "stazione": "Messina Centrale",
+                    "orario": "21:55"
                 }
             ]
         },
