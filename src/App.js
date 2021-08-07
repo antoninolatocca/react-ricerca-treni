@@ -270,6 +270,7 @@ class RigaSoluzioneTreno extends React.Component {
         </td>
         <td>
           <b>${treno.fermate[0].stazione}</b> / <b>${treno.fermate[treno.fermate.length -1].stazione}</b>
+          <i className="far fa-eye"></i>
         </td>
       </tr>
         <tr>
