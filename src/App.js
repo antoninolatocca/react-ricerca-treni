@@ -118,17 +118,17 @@ class Ricerca extends React.Component {
   }
 
   handleRicercaPartenzaChange(val) {
-    App.singleton.setState({ricercaPartenza: val.value});
+    this.setState({partenza: val.value});
     App.singleton.controllerRicerca.handleSelectPartenzaChange(val.value);
   }
 
   handleRicercaArrivoChange(val) {
-    this.setState({stazione_arrivo: val.value});
+    this.setState({arrivo: val.value});
     App.singleton.controllerRicerca.handleSelectArrivoChange(val.value);
   }
 
   handleRicercaOraInizioChange(val) {
-    this.setState({start: val.value});
+    this.setState({orario: val.value});
     App.singleton.controllerRicerca.handleSelectOraInizioChange(val.value);
   }
 
