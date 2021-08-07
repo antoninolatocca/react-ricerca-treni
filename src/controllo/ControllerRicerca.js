@@ -35,7 +35,12 @@ class ControllerRicerca {
 
     handleSelectConvoglioChange(value) {
         this._convoglio = value;
-        App.singleton.setState({treni:Utility.ricercaTreni(this._partenza, this._arrivo, this._orario, value, this._orderBy)})
+        App.singleton.setState({treni:Utility.ricercaTreni(this._partenza, this._arrivo, this._orario, value, this._orderBy)});
+    }
+
+    handleSelectOrdinamentoChange(value) {
+        this._orderBy = value;
+        App.singleton.setState({treni:Utility.ricercaTreni(this._partenza, this._arrivo, this._orario, this._convoglio, value)});
     }
 
     getDatiRigaTreno(treno) {
@@ -89,7 +94,8 @@ class ControllerRicerca {
             partenza: this._partenza,
             arrivo: this._arrivo,
             orario: this._orario,
-            convoglio: this._convoglio
+            convoglio: this._convoglio,
+            ordinamento: this._orderBy
         };
     }
 

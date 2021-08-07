@@ -134,9 +134,26 @@ class Utility {
             _soluzioni = sol_convoglio;
         }
         _soluzioni.sort((a, b) => {
-            let a1 = a.fermate[a.fermate.findFermateByName(partenza)].orario.split(":");
-            let b1 = b.fermate[b.fermate.findFermateByName(partenza)].orario.split(":");
-            return this.isAfter(a1, b1) ? 1 : -1;
+            let a1, b1;
+            switch(orderBy) {
+                case Costanti.PARTENZA:
+                    a1 = a.fermate[a.fermate.findFermateByName(partenza)].orario.split(":");
+                    b1 = b.fermate[b.fermate.findFermateByName(partenza)].orario.split(":");
+                    return this.isAfter(a1, b1) ? 1 : -1;
+                case Costanti.ARRIVO:
+                    a1 = a.fermate[a.fermate.findFermateByName(arrivo)].orario.split(":");
+                    b1 = b.fermate[b.fermate.findFermateByName(arrivo)].orario.split(":");
+                    return this.isAfter(a1, b1) ? 1 : -1;
+                case Costanti.DURATA:
+                    let fast_obj = this.getFasterSolution([a, b], partenza, arrivo);
+                    return (fast_obj.treni.includes(b.treno) && !fast_obj.treni.includes(a.treno)) ? 1 : -1;
+                default:
+                    a1 = a.fermate[a.fermate.findFermateByName(partenza)].orario.split(":");
+                    b1 = b.fermate[b.fermate.findFermateByName(partenza)].orario.split(":");
+                    return this.isAfter(a1, b1) ? 1 : -1;
+            }
+
+            
         })
 
         let faster = this.getFasterSolution(_soluzioni, partenza, arrivo);

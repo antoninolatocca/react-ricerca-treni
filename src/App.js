@@ -35,7 +35,8 @@ class App extends React.Component {
       ricercaPartenza: datiIniziali.partenza,
       ricercaArrivo: datiIniziali.arrivo,
       ricercaOraInizio: datiIniziali.orario,
-      ricercaConvoglio: datiIniziali.convoglio
+      ricercaConvoglio: datiIniziali.convoglio,
+      ordinamento: datiIniziali.ordinamento
     };
   }
 
@@ -86,7 +87,8 @@ class Ricerca extends React.Component {
       start : this.props.ricercaOraInizio,
       stazione_partenza : this.props.ricercaPartenza,
       stazione_arrivo : this.props.ricercaArrivo,
-      convoglio: this.props.ricercaConvoglio
+      convoglio: this.props.ricercaConvoglio,
+      ordinamento: this.props.ordinamento
     };
 
     this._stazioni = [];
@@ -125,6 +127,12 @@ class Ricerca extends React.Component {
       {value: '22', label: '22:00' },
       {value: '23', label: '23:00' }
     ];
+
+    this._ordinamenti = [
+      {value: Costanti.PARTENZA, label: Costanti.PARTENZA},
+      {value: Costanti.ARRIVO, label: Costanti.ARRIVO},
+      {value: Costanti.DURATA, label: Costanti.DURATA}
+    ];
   }
 
   handleRicercaPartenzaChange(val) {
@@ -145,6 +153,11 @@ class Ricerca extends React.Component {
   handleRicercaConvoglioChange(val) {
     this.setState({convoglio: val.value});
     App.singleton.controllerRicerca.handleSelectConvoglioChange(val.value);
+  }
+
+  handleOrdinamentoChange(val) {
+    this.setState({ordinamento: val.value});
+    App.singleton.controllerRicerca.handleSelectOrdinamentoChange(val.value);
   }
 
   render() {
@@ -190,6 +203,16 @@ class Ricerca extends React.Component {
                 options={this._convogli}
                 placeholder={(this.state.convoglio == Costanti.ALL) ? Costanti.TUTTI_I_TRENI : this.state.convoglio}
                 onChange={this.handleRicercaConvoglioChange.bind(this)}
+              />
+            </div>
+            <div className="col form-group">
+              <label htmlFor="ordinamento">{Costanti.ORDINA_PER} </label>
+              <Select
+                id="ordinamento"
+                value={this.state.ordinamento}
+                options={this._ordinamenti}
+                placeholder={(this.state.ordinamento) ? this.state.ordinamento : Costanti.ORDINA_PER}
+                onChange={this.handleOrdinamentoChange.bind(this)}
               />
             </div>
           </div>

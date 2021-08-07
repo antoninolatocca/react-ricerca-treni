@@ -43,6 +43,10 @@ class Costanti {
     static get TUTTI_I_TRENI() {
         return "Tutti i treni";
     }
+
+    static get ORDINA_PER() {
+        return "Ordina per";
+    }
 }
 
 export default Costanti;
