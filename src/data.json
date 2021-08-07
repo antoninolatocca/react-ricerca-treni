@@ -308,6 +308,56 @@
         },
         {
             "convoglio": "Frecciarossa 1000",
+            "treno": "9506",
+            "fermate": [
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "06:00"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "06:10"
+                },
+                {
+                    "stazione": "Orte",
+                    "orario": "06:43"
+                },
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "07:55"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "08:36"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "09:00"
+                },
+                {
+                    "stazione": "Milano Rogoredo",
+                    "orario": "09:41"
+                },
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "10:02"
+                },
+                {
+                    "stazione": "Rho-Fiera Milano",
+                    "orario": "10:16"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "10:53"
+                },
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "11:03"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
             "treno": "9603",
             "fermate": [
                 {
@@ -321,6 +371,48 @@
                 {
                     "stazione": "Roma Termini",
                     "orario": "09:10"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciarossa 1000",
+            "treno": "35506",
+            "fermate": [
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "06:09"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "07:35"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "07:45"
+                },
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "09:20"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "10:01"
+                },
+                {
+                    "stazione": "Ferrara",
+                    "orario": "10:29"
+                },
+                {
+                    "stazione": "Padova",
+                    "orario": "11:10"
+                },
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "11:29"
+                },
+                {
+                    "stazione": "Venezia S. Lucia",
+                    "orario": "11:38"
                 }
             ]
         },
@@ -417,6 +509,126 @@
                 {
                     "stazione": "Lecce",
                     "orario": "16:35"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciargento",
+            "treno": "35518",
+            "fermate": [
+                {
+                    "stazione": "Reggio Calabria Centrale",
+                    "orario": "06:12"
+                },
+                {
+                    "stazione": "Villa S. Giovanni",
+                    "orario": "06:30"
+                },
+                {
+                    "stazione": "Rosarno",
+                    "orario": "06:57"
+                },
+                {
+                    "stazione": "Vibo Valenzia Pizzo",
+                    "orario": "07:13"
+                },
+                {
+                    "stazione": "Lamezia Terme Centrale",
+                    "orario": "07:33"
+                },
+                {
+                    "stazione": "Paola",
+                    "orario": "08:04"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "09:54"
+                },
+                {
+                    "stazione": "Napoli Afragola",
+                    "orario": "10:20"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "11:35"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "11:45"
+                },
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "13:20"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "14:01"
+                },
+                {
+                    "stazione": "Padova",
+                    "orario": "15:10"
+                },
+                {
+                    "stazione": "Venezia Mestre",
+                    "orario": "15:28"
+                },
+                {
+                    "stazione": "Venezia S. Lucia",
+                    "orario": "15:38"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciabianca",
+            "treno": "35511",
+            "fermate": [
+                {
+                    "stazione": "Ravenna",
+                    "orario": "06:15"
+                },
+                {
+                    "stazione": "Rimini",
+                    "orario": "06:52"
+                },
+                {
+                    "stazione": "Riccione",
+                    "orario": "06:59"
+                },
+                {
+                    "stazione": "Pesaro",
+                    "orario": "07:16"
+                },
+                {
+                    "stazione": "Falconara Marittima",
+                    "orario": "07:50"
+                },
+                {
+                    "stazione": "Jesi",
+                    "orario": "08:07"
+                },
+                {
+                    "stazione": "Fabriano",
+                    "orario": "08:38"
+                },
+                {
+                    "stazione": "Foligno",
+                    "orario": "09:20"
+                },
+                {
+                    "stazione": "Spoleto",
+                    "orario": "09:42"
+                },
+                {
+                    "stazione": "Terni",
+                    "orario": "10:08"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "10:50"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "10:57"
                 }
             ]
         },
@@ -1727,6 +1939,52 @@
                 {
                     "stazione": "Bologna Centrale",
                     "orario": "16:59"
+                }
+            ]
+        },
+        {
+            "convoglio": "Intercity",
+            "treno": "541",
+            "fermate": [
+                {
+                    "stazione": "Ancona",
+                    "orario": "15:55"
+                },
+                {
+                    "stazione": "Falconara Marittima",
+                    "orario": "16:04"
+                },
+                {
+                    "stazione": "Jesi",
+                    "orario": "16:16"
+                },
+                {
+                    "stazione": "Fabriano",
+                    "orario": "16:52"
+                },
+                {
+                    "stazione": "Fossato di Vico Gubbio",
+                    "orario": "17:11"
+                },
+                {
+                    "stazione": "Foligno",
+                    "orario": "17:54"
+                },
+                {
+                    "stazione": "Spoleto",
+                    "orario": "18:13"
+                },
+                {
+                    "stazione": "Terni",
+                    "orario": "18:57"
+                },
+                {
+                    "stazione": "Orte",
+                    "orario": "19:16"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "19:50"
                 }
             ]
         },
