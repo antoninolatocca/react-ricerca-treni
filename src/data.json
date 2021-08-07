@@ -1,4 +1,74 @@
 {
+    "classi": [
+        {
+            "treno": "Frecciarossa 1000",
+            "servizi": [
+                "Standard",
+                "Standard Area Silenzio",
+                "Premium",
+                "Business",
+                "Business Area Silezio",
+                "Working Area",
+                "Executive"
+            ]
+        },
+        {
+            "treno": "Frecciarossa",
+            "servizi": [
+                "Standard",
+                "Standard Area Silenzio",
+                "Premium",
+                "Business",
+                "Business Area Silezio",
+                "Working Area",
+                "Business Salottino",
+                "Executive"
+            ]
+        },
+        {
+            "treno": "Frecciargento",
+            "servizi": [
+                "1ª Classe",
+                "2ª Classe"
+            ]
+        },
+        {
+            "treno": "Frecciabianca",
+            "servizi": [
+                "1ª Classe",
+                "2ª Classe"
+            ]
+        },
+        {
+            "treno": "IntercityNotte",
+            "servizi": [
+                "Posto a sedere 2ª Classe Basic",
+                "Cuccetta Confort Uso Singolo",
+                "Cuccetta Confort Doppia",
+                "Cuccetta Confort Tripla",
+                "Cuccetta Confort Quadrupla",
+                "Vagone Letto Deluxe Uso Singolo",
+                "Vagone Letto Deluxe Uso Doppia",
+                "Vagone Letto Deluxe Uso Tripla",
+                "Cabina Excelsior uso Singolo",
+                "Cambina Excelsior uso Doppia"
+            ]
+        },
+        {
+            "treno": "Intercity",
+            "servizi": [
+                "1ª Classe",
+                "2ª Classe"
+            ]
+        },
+        {
+            "treno": "Eurocity",
+            "servizi": [
+                "1ª Classe",
+                "2ª Classe"
+            ]
+        }
+    ],
     "treni": [
         {
             "convoglio": "IntercityNotte",

@@ -242,10 +242,50 @@ class RigaSoluzioneTreno extends React.Component {
 
   handleClickDettagli() {
     let treno = Utility.getTrenoByNumber(this.props.treno.treno);
+    let classi = Utility.getClassiDiServizio(treno.convoglio);
     let fermateTreno = App.singleton.controllerRicerca.getFermateTreno(treno);
 
     $('#titoloModal').html(treno.convoglio + " " + treno.treno);
+
+    let opt_classi = [];
+    let opt_classi_html = ""
+    for(let i = 0; i < classi.length; i++) {
+      opt_classi.push({value:classi[i].replaceAll(" ", "_"), label:classi[i]});
+      opt_classi_html += '<option value="' + classi[i].replaceAll(" ", "_") + '">' + classi[i] + '</option>';
+    }
+
+    let html_0 = `
+      <table className="table">
+        <tr>
+          <td>
+            Convoglio
+          </td>
+          <td>
+            <b>${treno.convoglio}</b>
+          </td>
+        </tr>
+        <tr>
+        <td>
+          Tratta
+        </td>
+        <td>
+          <b>${treno.fermate[0].stazione}</b> / <b>${treno.fermate[treno.fermate.length -1].stazione}</b>
+        </td>
+      </tr>
+        <tr>
+          <td>
+            <label for="classi" className="col-form-label">Classi di servizio</label>
+          </td>
+          <td>
+            <select id="classi" className="form-control">
+              ${opt_classi_html}
+            </select>
+          </td>
+        </tr>
+      </table><br/>`;
+
     let html = "<table className=\"table\">";
+    html += "<thead><tr><td>ORARIO</td><td>STAZIONE</td></tr></thead><tbody>";
     for (let i = 0; i < treno.fermate.length; i++) {
       const esito = fermateTreno.includes(treno.fermate[i].stazione)
       html += '<tr key="' + treno.fermate[i].stazione + '">';
@@ -255,7 +295,7 @@ class RigaSoluzioneTreno extends React.Component {
       html += (esito) ? treno.fermate[i].stazione.toUpperCase() : treno.fermate[i].stazione;
       html += (esito) ? '</strong></td></tr>' : '</em></small></td></tr>';
     }
-    $('#modalDettaglioBody').html(html + "</table>");
+    $('#modalDettaglioBody').html(html_0 + html + "</tbody></table>");
     $('#modalDettaglioTreno').modal('show');
   }
 
@@ -308,7 +348,7 @@ class ModalDettagli extends React.Component {
   render() {
     return(
       <div className="modal fade" id="modalDettaglioTreno" tabIndex="-1" role="dialog" aria-labelledby="titoloModal" aria-hidden="true">
-        <div className="modal-dialog" role="document">
+        <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="titoloModal">Dettagli treno</h5>

@@ -1,6 +1,6 @@
 import Costanti from './Costanti';
 
-const FRECCE = require('./data.json');
+const DATABASE = require('./data.json');
 
 Array.prototype.findFermateByName = function(stazione){
     let pos = -1;
@@ -16,7 +16,7 @@ Array.prototype.findFermateByName = function(stazione){
 class Utility {
 
     static get treni(){
-        return FRECCE;
+        return DATABASE;
     }
 
 
@@ -75,7 +75,7 @@ class Utility {
 
     static getListaStazioni() {
         let stazioni = new Set();
-        FRECCE.treni.forEach(tratta => {
+        DATABASE.treni.forEach(tratta => {
             tratta.fermate.forEach(fermata => {
                 stazioni.add(fermata.stazione);
             })
@@ -86,16 +86,27 @@ class Utility {
 
     static getListaRotabili() {
         let rotabili = new Set();
-        FRECCE.treni.forEach(treno => {
+        DATABASE.treni.forEach(treno => {
             rotabili.add(treno.convoglio);
         });
         rotabili = [...rotabili].sort();
         return rotabili;
     }
 
+    static getClassiDiServizio(treno) {
+        let classi = [];
+        for(let i = 0; i < DATABASE.classi.length; i++) {
+            if(DATABASE.classi[i].treno === treno) {
+                classi = DATABASE.classi[i].servizi;
+                return classi;
+            }
+        }
+        return classi;
+    }
+
     static ricercaTreni(partenza, arrivo, orario, convoglio, orderBy) {
         let _soluzioni = [];
-        FRECCE.treni.forEach(treno => {
+        DATABASE.treni.forEach(treno => {
             treno.fermate.forEach(fermata => {
                 if (fermata.stazione == partenza && fermata != treno.fermate[treno.fermate.length - 1]) {
                     _soluzioni.push(treno);
@@ -192,8 +203,8 @@ class Utility {
     }
 
     static getTrenoByNumber(numero) {
-        for (let i = 0; i < FRECCE.treni.length; i++) {
-            if(FRECCE.treni[i].treno === numero) return FRECCE.treni[i];
+        for (let i = 0; i < DATABASE.treni.length; i++) {
+            if(DATABASE.treni[i].treno === numero) return DATABASE.treni[i];
         }
         return false;
     }
