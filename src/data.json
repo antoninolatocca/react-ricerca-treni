@@ -509,6 +509,112 @@
             ]
         },
         {
+            "convoglio": "Intercity",
+            "treno": "505",
+            "fermate": [
+                {
+                    "stazione": "Ventimiglia",
+                    "orario": "06:41"
+                },
+                {
+                    "stazione": "Bordighera",
+                    "orario": "06:48"
+                },
+                {
+                    "stazione": "Sanremo",
+                    "orario": "06:58"
+                },
+                {
+                    "stazione": "Imperia",
+                    "orario": "07:10"
+                },
+                {
+                    "stazione": "Diano",
+                    "orario": "07:17"
+                },
+                {
+                    "stazione": "Alassia",
+                    "orario": "07:30"
+                },
+                {
+                    "stazione": "Albenga",
+                    "orario": "07:37"
+                },
+                {
+                    "stazione": "Finale Ligure Marina",
+                    "orario": "07:52"
+                },
+                {
+                    "stazione": "Savona",
+                    "orario": "08:05"
+                },
+                {
+                    "stazione": "Genova Piazza Principe",
+                    "orario": "08:53"
+                },
+                {
+                    "stazione": "Genova Brignole",
+                    "orario": "09:01"
+                },
+                {
+                    "stazione": "Rapallo",
+                    "orario": "09:22"
+                },
+                {
+                    "stazione": "Chiavari",
+                    "orario": "09:31"
+                },
+                {
+                    "stazione": "Sestri Levante",
+                    "orario": "09:38"
+                },
+                {
+                    "stazione": "La Spezia Centrale",
+                    "orario": "10:11"
+                },
+                {
+                    "stazione": "Massa Centro",
+                    "orario": "10:33"
+                },
+                {
+                    "stazione": "Viareggio",
+                    "orario": "10:46"
+                },
+                {
+                    "stazione": "Pisa Centrale",
+                    "orario": "11:11"
+                },
+                {
+                    "stazione": "Livorno Centrale",
+                    "orario": "11:26"
+                },
+                {
+                    "stazione": "Cecina",
+                    "orario": "11:50"
+                },
+                {
+                    "stazione": "Follonica",
+                    "orario": "12:15"
+                },
+                {
+                    "stazione": "Grosseto",
+                    "orario": "12:35"
+                },
+                {
+                    "stazione": "Civitavecchia",
+                    "orario": "13:26"
+                },
+                {
+                    "stazione": "Roma Ostiense",
+                    "orario": "14:22"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "14:33"
+                }
+            ]
+        },
+        {
             "convoglio": "Frecciarossa 1000",
             "treno": "9611",
             "fermate": [
