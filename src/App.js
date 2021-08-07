@@ -23,19 +23,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this._stazioni = Utility.getListaStazioni();
-    this._rotabili = Utility.getListaRotabili();
-
     App.singleton = this;
     this._controllerRicerca = new ControllerRicerca();
 
     let datiIniziali = this._controllerRicerca.getDatiIniziali();
     this.state = {
       treni: datiIniziali.treni,
-      ricercaPartenza: datiIniziali.partenza,
-      ricercaArrivo: datiIniziali.arrivo,
-      ricercaOraInizio: datiIniziali.orario,
-      ricercaConvoglio: datiIniziali.convoglio,
+      partenza: datiIniziali.partenza,
+      arrivo: datiIniziali.arrivo,
+      orario: datiIniziali.orario,
+      convoglio: datiIniziali.convoglio,
       ordinamento: datiIniziali.ordinamento
     };
   }
@@ -48,19 +45,10 @@ class App extends React.Component {
     return (
       <div className="container">
         <Ricerca
-          stazioni={this._stazioni}
-
-          ricercaPartenza={this.state.ricercaPartenza}
-          ricercaArrivo={this.state.ricercaArrivo}
-          ricercaOraInizio={this.state.ricercaOraInizio}
-          ricercaConvoglio={this.state.ricercaConvoglio}
+          state={this.state}
         />
         <TabellaSoluzioni
           lista={this.state.treni}
-          ricercaPartenza={this.state.ricercaPartenza}
-          ricercaArrivo={this.state.ricercaArrivo}
-          ricercaOraInizio={this.state.ricercaOraInizio}
-          ricercaConvoglio={this.state.ricercaConvoglio}
         />
         <Contatori 
           soluzioni={this.state.treni.length}
@@ -83,20 +71,14 @@ class Ricerca extends React.Component {
     this._jsonStazioni = Utility.getListaStazioni();
     this._jsonConvogli = Utility.getListaRotabili();
 
-    this.state = {
-      start : this.props.ricercaOraInizio,
-      stazione_partenza : this.props.ricercaPartenza,
-      stazione_arrivo : this.props.ricercaArrivo,
-      convoglio: this.props.ricercaConvoglio,
-      ordinamento: this.props.ordinamento
-    };
+    this.state = this.props.state;
 
     this._stazioni = [];
     for(let item of this._jsonStazioni.values()) {
       this._stazioni.push({value: item, label: item});
     };
 
-    this._convogli = [{value: Costanti.ALL, label: "Tutti i treni"}];
+    this._convogli = [{value: Costanti.ALL, label: Costanti.TUTTI_I_TRENI}];
     for(let item of this._jsonConvogli.values()) {
       this._convogli.push({value: item, label: item});
     };
@@ -169,9 +151,9 @@ class Ricerca extends React.Component {
               <label htmlFor="stazionePartenza">{Costanti.DA} </label>
               <Select
                 id="stazionePartenza"
-                value={this.state.ricercaPartenza}
+                value={this.state.partenza}
                 options={this._stazioni}
-                placeholder={(this.state.stazione_partenza) ? this.state.stazione_partenza : Costanti.STAZIONE_DI_PARTENZA}
+                placeholder={(this.state.partenza) ? this.state.partenza : Costanti.STAZIONE_DI_PARTENZA}
                 onChange={this.handleRicercaPartenzaChange.bind(this)}
               />
             </div>
@@ -179,9 +161,9 @@ class Ricerca extends React.Component {
               <label htmlFor="stazioneArrivo">{Costanti.A} </label>
               <Select
                 id="stazioneArrivo"
-                value={this.state.ricercaArrivo}
+                value={this.state.arrivo}
                 options={this._stazioni}
-                placeholder={(this.state.stazione_arrivo) ? this.state.stazione_arrivo : Costanti.STAZIONE_DI_ARRIVO}
+                placeholder={(this.state.arrivo) ? this.state.arrivo : Costanti.STAZIONE_DI_ARRIVO}
                 onChange={this.handleRicercaArrivoChange.bind(this)}
               />
             </div>
@@ -189,9 +171,9 @@ class Ricerca extends React.Component {
               <label htmlFor="dalleOre">{Costanti.ORE} </label>
               <Select
                 id="dalleOre"
-                value={this.state.start}
+                value={this.state.orario}
                 options={this._orari}
-                placeholder={Utility.displayDigit(this.state.start) + ":00"}
+                placeholder={Utility.displayDigit(this.state.orario) + ":00"}
                 onChange={this.handleRicercaOraInizioChange.bind(this)}
               />
             </div>
@@ -225,15 +207,6 @@ class Ricerca extends React.Component {
 
 /** + TABELLA */
 class TabellaSoluzioni extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this._ricercaPartenza = this.props.ricercaPartenza;
-    this._ricercaArrivo = this.props.ricercaArrivo;
-    this._ricercaInizio = this.props.ricercaOraInizio;
-    this._convogli = this.props.ricercaConvoglio;
-  }
 
   render() {
     let righe = [];
