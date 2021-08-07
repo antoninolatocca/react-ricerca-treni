@@ -124,7 +124,7 @@ class Utility {
             });
             _soluzioni = sol_arrivo;
         }
-        if(convoglio != "" && _soluzioni.length > 0){
+        if(convoglio != "all" && _soluzioni.length > 0){
             let sol_convoglio = [];
             _soluzioni.forEach(treno => {
                 if(treno.convoglio == convoglio) sol_convoglio.push(treno);
@@ -145,6 +145,7 @@ class Utility {
             
             _soluzioni[i].stops = _soluzioni[i].fermate.findFermateByName(arrivo) - _soluzioni[i].fermate.findFermateByName(partenza) -1;
         }
+        if(_soluzioni.length == 1) _soluzioni[0].faster = false;
         
         return _soluzioni;
     }

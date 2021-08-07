@@ -10,7 +10,9 @@ class ControllerRicerca {
         this._partenza = "Milano Centrale";
         this._arrivo = "Roma Termini";
         this._orario = _h;
-        this._convoglio = "Frecciarossa 1000";
+        this._convoglio = "all";
+
+        this._avviaRicerca = true;
     }
 
     handleSelectPartenzaChange(value) {
@@ -69,6 +71,23 @@ class ControllerRicerca {
             fermate.push(treno.fermate[i].stazione);
         }
         return fermate;
+    }
+
+    getDatiIniziali() {
+        let treni;
+        if(this._avviaRicerca) {
+            treni = Utility.ricercaTreni(this._partenza, this._arrivo, this._orario, this._convoglio);
+        } else {
+            treni = Utility.treni.treni;
+        }
+
+        return {
+            treni: treni,
+            partenza: this._partenza,
+            arrivo: this._arrivo,
+            orario: this._orario,
+            convoglio: this._convoglio
+        };
     }
 
 }

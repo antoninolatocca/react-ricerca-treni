@@ -21,21 +21,21 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    App.singleton = this;
-    this._controllerRicerca = new ControllerRicerca();
-    const _today = new Date();
-    const _h = _today.getHours();
+
     this._stazioni = Utility.getListaStazioni();
     this._rotabili = Utility.getListaRotabili();
+
+    App.singleton = this;
+    this._controllerRicerca = new ControllerRicerca();
+
+    let datiIniziali = this._controllerRicerca.getDatiIniziali();
     this.state = {
-      treni: Utility.treni.treni,
-      ricercaPartenza: 'Milano Centrale',
-      ricercaArrivo: 'Roma Termini',
-      ricercaOraInizio: _h,
-      ricercaConvoglio: "Frecciarossa 1000"
+      treni: datiIniziali.treni,
+      ricercaPartenza: datiIniziali.partenza,
+      ricercaArrivo: datiIniziali.arrivo,
+      ricercaOraInizio: datiIniziali.orario,
+      ricercaConvoglio: datiIniziali.convoglio
     };
-    // ON/OFF 
-    this.state.treni = Utility.ricercaTreni(this.state.ricercaPartenza, this.state.ricercaArrivo, this.state.ricercaOraInizio, this.state.ricercaConvoglio);
 
     this.handleRicercaArrivoChange = this.handleRicercaArrivoChange.bind(
       this
@@ -126,7 +126,7 @@ class Ricerca extends React.Component {
       this._stazioni.push({value: item, label: item});
     };
 
-    this._convogli = [];
+    this._convogli = [{value: "all", label: "Tutti i treni"}];
     for(let item of this._jsonConvogli.values()) {
       this._convogli.push({value: item, label: item});
     };
@@ -218,9 +218,9 @@ class Ricerca extends React.Component {
               <label htmlFor="convogli">Treno </label>
               <Select
                 id="convogli"
-                value={this.state.ricercaConvoglio}
+                value={this.state.convoglio}
                 options={this._convogli}
-                placeholder={(this.state.convoglio) ? this.state.convoglio : "Treno"}
+                placeholder={(this.state.convoglio == "all") ? "Tutti i treni" : this.state.convoglio}
                 onChange={this.handleRicercaConvoglioChange.bind(this)}
               />
             </div>
