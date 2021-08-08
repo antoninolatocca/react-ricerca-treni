@@ -64,8 +64,11 @@
         {
             "treno": "Eurocity",
             "servizi": [
+                "2ª Classe",
+                "2ª Classe Famiglia",
                 "1ª Classe",
-                "2ª Classe"
+                "1ª Classe Silenzio",
+                "1ª Classe Business"
             ]
         }
     ],
@@ -1371,6 +1374,48 @@
             ]
         },
         {
+            "convoglio": "Eurocity",
+            "treno": "314",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "09:10"
+                },
+                {
+                    "stazione": "Monza",
+                    "orario": "09:22"
+                },
+                {
+                    "stazione": "Como S. Giovanni",
+                    "orario": "09:50"
+                },
+                {
+                    "stazione": "Chiasso",
+                    "orario": "10:05"
+                },
+                {
+                    "stazione": "Lugano",
+                    "orario": "10:30"
+                },
+                {
+                    "stazione": "Bellinzona",
+                    "orario": "10:46"
+                },
+                {
+                    "stazione": "Arth Goldau",
+                    "orario": "11:45"
+                },
+                {
+                    "stazione": "Zug",
+                    "orario": "12:02"
+                },
+                {
+                    "stazione": "Zurich HB",
+                    "orario": "12:27"
+                }
+            ]
+        },
+        {
             "convoglio": "Frecciarossa 1000",
             "treno": "35511",
             "fermate": [
@@ -1555,6 +1600,212 @@
                 {
                     "stazione": "Verona Porta Nuova",
                     "orario": "13:08"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciargento",
+            "treno": "8889",
+            "fermate": [
+                {
+                    "stazione": "Milano Centrale",
+                    "orario": "12:05"
+                },
+                {
+                    "stazione": "Parma",
+                    "orario": "12:54"
+                },
+                {
+                    "stazione": "Reggio Emilia",
+                    "orario": "13:08"
+                },
+                {
+                    "stazione": "Modena",
+                    "orario": "13:21"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "13:45"
+                },
+                {
+                    "stazione": "Forlì",
+                    "orario": "14:16"
+                },
+                {
+                    "stazione": "Rimini",
+                    "orario": "14:43"
+                },
+                {
+                    "stazione": "Pesaro",
+                    "orario": "15:02"
+                },
+                {
+                    "stazione": "Semigallia",
+                    "orario": "15:18"
+                },
+                {
+                    "stazione": "Ancona",
+                    "orario": "15:37"
+                },
+                {
+                    "stazione": "S. Benedetto del Tronto",
+                    "orario": "16:16"
+                },
+                {
+                    "stazione": "Pescara",
+                    "orario": "16:50"
+                },
+                {
+                    "stazione": "Termoli",
+                    "orario": "17:39"
+                },
+                {
+                    "stazione": "Foggia",
+                    "orario": "18:24"
+                },
+                {
+                    "stazione": "Barletta",
+                    "orario": "18:53"
+                },
+                {
+                    "stazione": "Bari Centrale",
+                    "orario": "19:34"
+                },
+                {
+                    "stazione": "Monopoli",
+                    "orario": "19:56"
+                },
+                {
+                    "stazione": "Ostuni",
+                    "orario": "20:15"
+                },
+                {
+                    "stazione": "Brindisi",
+                    "orario": "20:36"
+                },
+                {
+                    "stazione": "Lecce",
+                    "orario": "21:00"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciabianca",
+            "treno": "8315",
+            "fermate": [
+                {
+                    "stazione": "Genova Piazza Principe",
+                    "orario": "12:10"
+                },
+                {
+                    "stazione": "Genova Brignole",
+                    "orario": "12:17"
+                },
+                {
+                    "stazione": "Chiavari",
+                    "orario": "12:46"
+                },
+                {
+                    "stazione": "La Spezia Centrale",
+                    "orario": "13:16"
+                },
+                {
+                    "stazione": "Massa Centro",
+                    "orario": "13:36"
+                },
+                {
+                    "stazione": "Viareggio",
+                    "orario": "13:48"
+                },
+                {
+                    "stazione": "Pisa Centrale",
+                    "orario": "14:07"
+                },
+                {
+                    "stazione": "Livorno Centrale",
+                    "orario": "14:22"
+                },
+                {
+                    "stazione": "Campiglia Marittima",
+                    "orario": "14:57"
+                },
+                {
+                    "stazione": "Grosseto",
+                    "orario": "15:24"
+                },
+                {
+                    "stazione": "Civitavecchia",
+                    "orario": "16:16"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "17:03"
+                }
+            ]
+        },
+        {
+            "convoglio": "Frecciargento",
+            "treno": "8519",
+            "fermate": [
+                {
+                    "stazione": "Bolzano",
+                    "orario": "13:12"
+                },
+                {
+                    "stazione": "Trento",
+                    "orario": "13:43"
+                },
+                {
+                    "stazione": "Rovereto",
+                    "orario": "13:57"
+                },
+                {
+                    "stazione": "Verona Porta Nuova",
+                    "orario": "14:52"
+                },
+                {
+                    "stazione": "Bologna Centrale",
+                    "orario": "15:47"
+                },
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "16:33"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "18:02"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "18:20"
+                },
+                {
+                    "stazione": "Napoli Afragola",
+                    "orario": "19:21"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "19:50"
+                },
+                {
+                    "stazione": "Maratea",
+                    "orario": "21:02"
+                },
+                {
+                    "stazione": "Scalea S. Domenica Talao",
+                    "orario": "21:15"
+                },
+                {
+                    "stazione": "Paola",
+                    "orario": "21:43"
+                },
+                {
+                    "stazione": "Torano Lattarico",
+                    "orario": "22:07"
+                },
+                {
+                    "stazione": "Sibari",
+                    "orario": "22:34"
                 }
             ]
         },
@@ -1874,7 +2125,47 @@
                 },
                 {
                     "stazione": "Bologna Centrale",
-                    "orario": "16:24"
+                    "orario": "16:27"
+                },
+                {
+                    "stazione": "Firenze S. M. Novella",
+                    "orario": "17:14"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "18:43"
+                },
+                {
+                    "stazione": "Roma Termini",
+                    "orario": "19:00"
+                },
+                {
+                    "stazione": "Napoli Afragola",
+                    "orario": "19:58"
+                },
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "20:20"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "20:59"
+                },
+                {
+                    "stazione": "Potenza Centrale",
+                    "orario": "22:24"
+                },
+                {
+                    "stazione": "Ferrandina",
+                    "orario": "23:13"
+                },
+                {
+                    "stazione": "Metaponto",
+                    "orario": "23:38"
+                },
+                {
+                    "stazione": "Taranto",
+                    "orario": "00:07"
                 }
             ]
         },
@@ -2972,6 +3263,56 @@
         },
         {
             "convoglio": "IntercityNotte",
+            "treno": "35599",
+            "fermate": [
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "21:25"
+                },
+                {
+                    "stazione": "Torino Porta Susa",
+                    "orario": "21:40"
+                },
+                {
+                    "stazione": "Vercelli",
+                    "orario": "22:22"
+                },
+                {
+                    "stazione": "Novara",
+                    "orario": "22:38"
+                },
+                {
+                    "stazione": "Milano Porta Garibaldi",
+                    "orario": "23:20"
+                },
+                {
+                    "stazione": "Piacenza",
+                    "orario": "00:03"
+                },
+                {
+                    "stazione": "Parma",
+                    "orario": "00:32"
+                },
+                {
+                    "stazione": "Orte",
+                    "orario": "06:44"
+                },
+                {
+                    "stazione": "Roma Tiburtina",
+                    "orario": "07:23"
+                },
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "10:25"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "11:05"
+                }
+            ]
+        },
+        {
+            "convoglio": "IntercityNotte",
             "treno": "794",
             "fermate": [
                 {
@@ -3209,6 +3550,88 @@
                 {
                     "stazione": "Civitavecchia",
                     "orario": "04:58"
+                }
+            ]
+        },
+        {
+            "convoglio": "IntercityNotte",
+            "treno": "36013",
+            "fermate": [
+                {
+                    "stazione": "Torino Porta Nuova",
+                    "orario": "21:55"
+                },
+                {
+                    "stazione": "Torino Lingotto",
+                    "orario": "22:03"
+                },
+                {
+                    "stazione": "Asti",
+                    "orario": "22:36"
+                },
+                {
+                    "stazione": "Alessandria",
+                    "orario": "22:59"
+                },
+                {
+                    "stazione": "Genova Piazza Principe",
+                    "orario": "23:53"
+                },
+                {
+                    "stazione": "Genova Brignole",
+                    "orario": "00:02"
+                },
+                {
+                    "stazione": "Rapallo",
+                    "orario": "00:28"
+                },
+                {
+                    "stazione": "Chiavari",
+                    "orario": "00:38"
+                },
+                {
+                    "stazione": "La Spezia Centrale",
+                    "orario": "01:27"
+                },
+                {
+                    "stazione": "Pisa Centrale",
+                    "orario": "02:21"
+                },
+                {
+                    "stazione": "Livorno Centrale",
+                    "orario": "02:40"
+                },
+                {
+                    "stazione": "Grosseto",
+                    "orario": "03:57"
+                },
+                {
+                    "stazione": "Civitavecchia",
+                    "orario": "05:00"
+                },
+                {
+                    "stazione": "Roma Ostiense",
+                    "orario": "05:48"
+                },
+                {
+                    "stazione": "Frosinone",
+                    "orario": "06:59"
+                },
+                {
+                    "stazione": "Cassino",
+                    "orario": "07:35"
+                },
+                {
+                    "stazione": "Caserta",
+                    "orario": "08:28"
+                },
+                {
+                    "stazione": "Napoli Centrale",
+                    "orario": "09:25"
+                },
+                {
+                    "stazione": "Salerno",
+                    "orario": "10:06"
                 }
             ]
         },
